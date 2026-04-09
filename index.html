@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sushant Shrestha — poetry, music & photography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #0d0c0a;
+      --bg-lift:      #111009;
+      --bg-card:      #0f0e0b;
+      --text:         #dcd5c5;
+      --text-dim:     #6b6356;
+      --text-faint:   #252219;
+      --accent:       #b8924a;
+      --accent-dim:   #6b5230;
+      --border:       #1c1a16;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Crimson Pro', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Grain texture */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 9000;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 2px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--text-dim); }
+
+    /* Selection */
+    ::selection { background: var(--accent-dim); color: var(--text); }
+
+    /* ═══════════════════════════════════ NAV ═══════════════════════════════════ */
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.6rem 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.5s, border-color 0.5s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(13, 12, 10, 0.94);
+      border-bottom-color: var(--border);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .nav-logo:hover { opacity: 1; }
+    .nav-links {
+      display: flex;
+      gap: 2.8rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--text-dim);
+      transition: all 0.3s;
+    }
+
+    /* Mobile nav drawer */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(13, 12, 10, 0.98);
+      z-index: 99;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.3s;
+    }
+    .nav-drawer a:hover { color: var(--text); }
+    .nav-drawer-close {
+      position: absolute;
+      top: 1.8rem;
+      right: 3.5rem;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      transition: color 0.3s;
+    }
+    .nav-drawer-close:hover { color: var(--text); }
+
+    /* ═══════════════════════════════════ HERO ══════════════════════════════════ */
+
+    #home {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 9rem 3.5rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Very subtle radial warmth on left */
+    #home::before {
+      content: '';
+      position: absolute;
+      top: 40%;
+      left: -10%;
+      width: 60vw;
+      height: 60vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,146,74,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      animation: fadeUp 1s 0.1s ease forwards;
+    }
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(3.8rem, 8vw, 8.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      max-width: 12ch;
+      opacity: 0;
+      animation: fadeUp 1.2s 0.3s ease forwards;
+    }
+    .hero-tagline em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-vline {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, var(--accent-dim), transparent);
+      margin: 3.2rem 0;
+      transform: scaleY(0);
+      transform-origin: top;
+      opacity: 0;
+      animation: growLine 1s 0.7s ease forwards;
+    }
+    .hero-mission {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      max-width: 40ch;
+      line-height: 1.85;
+      opacity: 0;
+      animation: fadeUp 1s 1s ease forwards;
+    }
+    .hero-links {
+      margin-top: 3.5rem;
+      display: flex;
+      gap: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 1s 1.2s ease forwards;
+    }
+    .hero-link {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .hero-link::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -3px;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.4s;
+    }
+    .hero-link:hover { color: var(--text); }
+    .hero-link:hover::after { width: 100%; }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 3rem;
+      right: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeIn 1s 1.5s ease forwards;
+    }
+    .scroll-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      writing-mode: vertical-rl;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--text-faint), transparent);
+      animation: scrollBreathe 2.5s 2s ease-in-out infinite;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes growLine {
+      from { transform: scaleY(0); opacity: 0; }
+      to   { transform: scaleY(1); opacity: 1; }
+    }
+    @keyframes scrollBreathe {
+      0%, 100% { opacity: 0.15; transform: scaleY(0.85); }
+      50%       { opacity: 0.5;  transform: scaleY(1); }
+    }
+
+    /* ═══════════════════════════════ SHARED SECTION ════════════════════════════ */
+
+    .section-wrap {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 9rem 3.5rem;
+    }
+    .section-wrap.border-top {
+      border-top: 1px solid var(--border);
+    }
+    .section-label {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--accent-dim);
+      margin-bottom: 4rem;
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+    }
+    .section-label::after {
+      content: '';
+      width: 36px;
+      height: 1px;
+      background: var(--text-faint);
+      flex-shrink: 0;
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ═══════════════════════════════════ ABOUT ══════════════════════════════════ */
+
+    #about .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .about-aside {
+      position: sticky;
+      top: 8rem;
+    }
+    .about-aside-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 2.6rem;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+    .about-aside-concept {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.4rem;
+    }
+    .about-aside-concept-name {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--accent);
+      margin-bottom: 1.8rem;
+    }
+    .about-body p {
+      font-size: 1.08rem;
+      line-height: 1.88;
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+    .about-body p:first-child::first-letter {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      font-weight: 300;
+      line-height: 0.78;
+      float: left;
+      margin-right: 0.08em;
+      margin-top: 0.06em;
+      color: var(--accent);
+    }
+    .about-body em { color: var(--accent); font-style: italic; }
+    .about-pull {
+      margin: 3rem 0;
+      padding-left: 2rem;
+      border-left: 1px solid var(--accent-dim);
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.35rem;
+      line-height: 1.5;
+      color: var(--text-dim);
+    }
+
+    /* ═══════════════════════════════ POETRY ════════════════════════════════════ */
+
+    #poetry-section {
+      border-top: 1px solid var(--border);
+      padding: 0;
+    }
+    #poetry-section .section-wrap {
+      padding-bottom: 0;
+    }
+    .poetry-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 1rem;
+    }
+    .poem-card {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.3s;
+    }
+    .poem-card:hover { background: rgba(184,146,74,0.02); }
+    .poem-card:nth-child(odd)  { padding-right: 3.5rem; border-right: 1px solid var(--border); }
+    .poem-card:nth-child(even) { padding-left: 3.5rem; }
+    .poem-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+
+    .poem-num {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      color: var(--accent-dim);
+      margin-bottom: 1rem;
+    }
+    .poem-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.75rem;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 1rem;
+      transition: color 0.3s;
+    }
+    .poem-card:hover .poem-title { color: var(--accent); }
+    .poem-preview {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--text-dim);
+      line-height: 1.65;
+      max-width: 34ch;
+    }
+    .poem-cta {
+      margin-top: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      transition: color 0.3s;
+    }
+    .poem-cta::before {
+      content: '';
+      width: 18px;
+      height: 1px;
+      background: currentColor;
+    }
+    .poem-card:hover .poem-cta { color: var(--accent); }
+
+    /* Expanded poem */
+    .poem-expanded {
+      display: none;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .poem-expanded.open { display: block; }
+    .poem-text {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.02rem;
+      line-height: 2.05;
+      color: var(--text);
+      white-space: pre-line;
+    }
+    .poem-text-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--accent-dim);
+      font-style: normal;
+      margin: 1rem 0 0.4rem;
+      display: block;
+    }
+    .poem-close-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2.5rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: color 0.3s;
+      background: none;
+      border: none;
+      font-family: var(--font-display);
+    }
+    .poem-close-btn:hover { color: var(--accent); }
+
+    /* ════════════════════════════ LUMINARRATION ═════════════════════════════════ */
+
+    #luminarration-section { border-top: 1px solid var(--border); }
+
+    .lumin-def {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+      line-height: 1.55;
+      color: var(--text);
+      max-width: 50ch;
+      margin-bottom: 6rem;
+    }
+    .lumin-def span { color: var(--accent); }
+
+    .invocations {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .invocations-heading {
+      position: sticky;
+      top: 8rem;
+    }
+    .invocations-super {
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 1rem;
+      font-family: var(--font-display);
+    }
+    .invocations-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 1.2;
+      color: var(--text);
+    }
+    .invocations-body p {
+      font-size: 1.02rem;
+      line-height: 1.88;
+      color: var(--text-dim);
+      margin-bottom: 1.8rem;
+    }
+    .invocations-body p:last-child { margin-bottom: 0; }
+
+    /* ════════════════════════════ PHOTOGRAPHY ═══════════════════════════════════ */
+
+    #photography-section { border-top: 1px solid var(--border); padding: 0; }
+    #photography-section .section-wrap { padding-bottom: 0; }
+
+    .galleries {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 3rem;
+    }
+    .gallery {
+      aspect-ratio: 3 / 4;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2.5rem;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.5s ease;
+    }
+    .gallery:hover { transform: scale(1.01); }
+    .gallery-bg {
+      position: absolute;
+      inset: 0;
+      transition: opacity 0.5s;
+    }
+    .gallery:nth-child(1) .gallery-bg { background: linear-gradient(145deg, #1a1710 0%, #0d0c09 100%); }
+    .gallery:nth-child(2) .gallery-bg { background: linear-gradient(145deg, #181613 0%, #0c0b09 100%); }
+    .gallery:nth-child(3) .gallery-bg { background: linear-gradient(145deg, #141614 0%, #0a0c0a 100%); }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,12,10,0.88) 30%, rgba(13,12,10,0.1) 80%);
+    }
+    .gallery-content { position: relative; z-index: 1; }
+    .gallery-num {
+      font-family: var(--font-display);
+      font-size: 0.58rem;
+      letter-spacing: 0.4em;
+      color: var(--accent-dim);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .gallery-name {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.7rem;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+    .gallery-desc-text {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      max-width: 22ch;
+    }
+    /* Decorative thin lines on galleries */
+    .gallery::before {
+      content: '';
+      position: absolute;
+      top: 2.5rem; left: 2.5rem;
+      width: 24px; height: 1px;
+      background: var(--accent-dim);
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .gallery:hover::before { opacity: 1; }
+
+    /* ══════════════════════════ PUBLICATIONS ════════════════════════════════════ */
+
+    #publications-section { border-top: 1px solid var(--border); }
+    .publications-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 1rem;
+    }
+    .publication-card {
+      border: 1px solid var(--border);
+      padding: 3rem;
+      position: relative;
+      transition: border-color 0.4s;
+    }
+    .publication-card:hover { border-color: var(--accent-dim); }
+    .pub-status {
+      font-size: 0.58rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--accent-dim);
+      font-family: var(--font-display);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .pub-status::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      display: block;
+    }
+    .pub-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .pub-desc {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════ CONTACT ═════════════════════════════════════ */
+
+    #contact-section { border-top: 1px solid var(--border); }
+    .contact-inner { text-align: center; }
+    .contact-inner .section-label { justify-content: center; }
+    .contact-inner .section-label::after { display: none; }
+
+    .contact-tagline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.2;
+      color: var(--text);
+      max-width: 18ch;
+      margin: 0 auto 4rem;
+    }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+    .contact-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      font-family: var(--font-display);
+      color: var(--text-dim);
+      transition: color 0.3s;
+    }
+    .contact-link:hover { color: var(--accent); }
+    .contact-link-glyph {
+      font-style: italic;
+      font-size: 1.5rem;
+      font-weight: 300;
+      line-height: 1;
+    }
+    .contact-link-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+    }
+
+    /* ════════════════════════════════ FOOTER ════════════════════════════════════ */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    /* ══════════════════════════ RESPONSIVE ══════════════════════════════════════ */
+
+    @media (max-width: 900px) {
+      #about .about-inner { grid-template-columns: 1fr; gap: 0; }
+      .about-aside { position: static; margin-bottom: 3rem; }
+      .invocations { grid-template-columns: 1fr; gap: 3rem; }
+      .invocations-heading { position: static; }
+      .publications-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      #home { padding: 8rem 1.5rem 5rem; }
+      .section-wrap { padding: 5rem 1.5rem; }
+      .hero-tagline { font-size: clamp(3rem, 14vw, 5rem); }
+      .poetry-grid { grid-template-columns: 1fr; }
+      .poem-card:nth-child(odd)  { padding-right: 0; border-right: none; }
+      .poem-card:nth-child(even) { padding-left: 0; }
+      .poem-card:nth-last-child(-n+2) { border-bottom: none; }
+      .poem-card { border-bottom: 1px solid var(--border) !important; }
+      .galleries { grid-template-columns: 1fr; }
+      .gallery { aspect-ratio: 4 / 3; }
+      .contact-links { gap: 2.5rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════ NAV ════════════════════════════════════ -->
+<nav id="main-nav">
+  <a href="#home" class="nav-logo">Sushant Shrestha</a>
+  <ul class="nav-links">
+    <li><a href="#about-section">About</a></li>
+    <li><a href="#poetry-section">Poetry</a></li>
+    <li><a href="#luminarration-section">Luminarration</a></li>
+    <li><a href="#photography-section">Photography</a></li>
+    <li><a href="#contact-section">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Open menu" id="nav-toggle-btn" onclick="openDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="nav-drawer">
+  <button class="nav-drawer-close" onclick="closeDrawer()">Close</button>
+  <a href="#about-section" onclick="closeDrawer()">About</a>
+  <a href="#poetry-section" onclick="closeDrawer()">Poetry</a>
+  <a href="#luminarration-section" onclick="closeDrawer()">Luminarration</a>
+  <a href="#photography-section" onclick="closeDrawer()">Photography</a>
+  <a href="#contact-section" onclick="closeDrawer()">Contact</a>
+</div>
+
+<!-- ════════════════════════════════ HERO ════════════════════════════════════ -->
+<section id="home">
+  <p class="hero-eyebrow">arts.sushantshrestha.com</p>
+  <h1 class="hero-tagline">
+    poetry,<br>
+    music &<br>
+    photography
+  </h1>
+  <div class="hero-vline"></div>
+  <p class="hero-mission">
+    my art is my quest to discover the depths of mystery in mundane, metaphysics, and metamorphosis
+  </p>
+  <div class="hero-links">
+    <a href="#poetry-section" class="hero-link">Read poems</a>
+    <a href="#about-section" class="hero-link">About</a>
+    <a href="https://www.sushantshrestha.com/" target="_blank" class="hero-link">Work site</a>
+  </div>
+  <div class="hero-scroll-hint">
+    <span class="scroll-label">scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ ABOUT ═══════════════════════════════════ -->
+<div id="about-section">
+  <div class="section-wrap border-top">
+    <div class="section-label reveal">about</div>
+    <div class="about-inner">
+      <div class="about-aside reveal">
+        <h2 class="about-aside-title">The artist<br>& his quest</h2>
+        <p class="about-aside-concept">Philosophical framework</p>
+        <p class="about-aside-concept-name">Post-Integral Realism</p>
+        <p class="about-aside-concept">Art forms</p>
+        <p class="about-aside-concept-name">Poetry · Photography · Music</p>
+      </div>
+      <div class="about-body">
+        <p class="reveal">My journey of writing poetry began in my teenage years, where, like many young poets, I wrote from the depths of heightened emotion and romantic idealism. The early stage lover archetype dominated my writing — passionate verses about unrequited love, cosmic connection, and the yearning for a perfect union. I poured my heart onto pages, believing that true poetry meant transcending the ordinary world for something more sublime. I spent years chasing the mystical and studying maps of consciousness and psychology.</p>
+        <p class="reveal">As I matured, I began to recognize the beauty in embracing not just the light but also the shadow aspects of myself. Rather than trying to heal, spiritualize or transform my wounded parts, I learned to sit with them, to love even the unhealed portions of my being. This shift marked my first steps toward something new in my awareness, which I now call <em>Post-Integral Realism</em> — understanding that wholeness doesn't always mean transcendence or healing but can simply mean being present with what is, including our darkness.</p>
+        <blockquote class="about-pull reveal">
+          Where sophisticated maps of meaning meet simple presence — where the mundane reveals its inherent depth without needing to be transformed into something else.
+        </blockquote>
+        <p class="reveal">When I engage with Post-Integral Realism, I find myself returning to the ordinary moments of life with renewed attention and affection. While I understand the transcend-and-include pattern of integral metatheory and the oscillations of metamodernism, I choose to suspend these frameworks methodologically — not to reject their validity, but to more fully inhabit the present moment.</p>
+        <p class="reveal">Rather than always seeking to transcend or oscillate between different modes of being, I've learned to find profound meaning in staying with what is. My poetry is an exploration of this — finding extraordinary depth in ordinary moments, not by rising above them, but by sinking more fully into their reality.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ POETRY ══════════════════════════════════ -->
+<div id="poetry-section">
+  <div class="section-wrap">
+    <div class="section-label reveal">poetry</div>
+  </div>
+  <div style="max-width:1140px; margin: 0 auto; padding: 0 3.5rem 9rem;">
+    <div class="poetry-grid">
+
+      <!-- I -->
+      <div class="poem-card reveal" onclick="togglePoem(this)">
+        <div class="poem-num">I</div>
+        <div class="poem-title">We Mystery Together</div>
+        <div class="poem-preview">We gather together to feel the heart of the Eternal One,<br>as the ancient sun ascends, reclaiming a new dawn.</div>
+        <div class="poem-cta">Read poem</div>
+        <div class="poem-expanded">
+          <div class="poem-text">We gather together to feel the heart of the Eternal One,
+As the ancient sun ascends, reclaiming a new dawn.
+Again, I seek and find my beloved in boundless spaces,
+A quest of the time as my beloved's smile graces myriad faces.
+We journey together,
+We mystery together.
+
+Step into the beat and hear the Ancient One sing,
+Songs of the heights are the spans of our depths.
+The fire amidst our circle is borne by the Elders' bones,
+Invoking portals of new perceptions and the spaces between our breaths.
+We dive together; we embrace together; we climb together.
+We mystery together.
+
+Waking up and growing up does not mean much without your embrace,
+Showing up and cleaning up remains undone without you by my side.
+Teaming up and beaming up is now what I long for,
+As our new world begins and manifold kosmos collide.
+We team together; we beam together.
+We mystery together.
+
+In the dense heart space of our mystery together,
+Each moment in perpetuity drenched in intimacy.
+Feeling the rush of cold springs upon our skin,
+We initiate each other into an unfolding symphony.
+We heart together; we co-heart together.
+We mystery together.
+
+The Quadrants open like the windows in our hearts,
+Our Metamodern sincerity reminds us of our ancestral bliss.
+Through integration and oscillation, we dance down the mountain,
+Unknowing and re-knowing reality like a beloved's first kiss.
+We dance together; we synthesize together; we whole together.
+We mystery together.
+
+While our AIs hallucinate and rendezvous in the liminal spaces,
+We risk the loss of our nature and nurture the tragedy of gaining Gods' gaze.
+Quantum computing awakens a new Indra's Net,
+While the meta-crisis calls forth a trans-lineage Shamanic engage.
+We decode together; we recode together.
+We source code together.
+We mystery together.
+
+Listen to my secret, as I can only speak this to you,
+Longing is the deliciousness of duality;
+Belonging is nonduality relishing duality.
+There are endless stages beyond the Ultimate,
+All are leading to a Chemical Wedding of diverging finalities.
+That is why we long together; we belong together; we relish together.
+We are a mystery together, and
+We mystery together.</div>
+          <button class="poem-close-btn" onclick="closePoem(event, this)">— Close poem</button>
+        </div>
+      </div>
+
+      <!-- II -->
+      <div class="poem-card reveal reveal-delay-1" onclick="togglePoem(this)">
+        <div class="poem-num">II</div>
+        <div class="poem-title">Someday</div>
+        <div class="poem-preview">They will understand, someday,<br>why you must forge your own path.</div>
+        <div class="poem-cta">Read poem</div>
+        <div class="poem-expanded">
+          <div class="poem-text">They will understand, someday,
+Why you must forge your own path.
+Though your mind searches endlessly for answers,
+The whispers of your heart hold truth.
+
+Even as emotions swirl like tempests,
+And confusion clouds your way,
+Choose the life that speaks your name—
+It's yours alone to claim.
+
+The road ahead may be uncertain,
+But you are not astray.
+Your destination may be hidden,
+But home lives in your veins.
+
+Those gentle whispers in your heart
+Are melodies unsung,
+Keep walking till you find your voice
+And let your song ring true.
+
+In solitude, you may feel hollow,
+Let this truth set you free:
+It's in the depths of being alone
+That you find who you're meant to be.
+
+One day they'll understand your journey,
+And dance to your soul's refrain.
+Then you'll see that all along,
+You carried home within.
+
+Let tears fall freely, let your heart crack open,
+Let every feeling flow through you and show.
+This is the price your song demands,
+The cost of loving who you are.
+
+For when you embrace yourself completely,
+Your love will flood the world.
+They'll understand your solitary path
+When they feel your heart's deep truth.
+
+Through darkness and through light you'll travel,
+Your song forever on your lips.
+It will be your compass, be your healing,
+Guide you through the mist.
+
+And there will come a day of wonder
+When you pause to truly see
+The infinite mystery that you are—
+A universe set free.</div>
+          <button class="poem-close-btn" onclick="closePoem(event, this)">— Close poem</button>
+        </div>
+      </div>
+
+      <!-- III -->
+      <div class="poem-card reveal" onclick="togglePoem(this)">
+        <div class="poem-num">III</div>
+        <div class="poem-title">"I will be yours there"</div>
+        <div class="poem-preview">She calls me to the greatest heights<br>as I sway and stumble through my way.</div>
+        <div class="poem-cta">Read poem</div>
+        <div class="poem-expanded">
+          <div class="poem-text">She calls me to the greatest heights
+As I sway and stumble through my way
+She speaks tenderly of my eclipsed light
+In her palatial presence on the seraphic bay
+
+I have nowhere to go and nowhere to hide
+Because she seizes me with an easy smile
+Leaving me with laughter and shattered pride
+Her gift of sacred humiliation and a celestial exile
+
+In the clouds and through the skies
+She holds me close in shivering nights
+Whispering words of manifold guise
+She calls me back to my greatest heights
+
+Her golden hair entangles with mine
+While our eyes meet in interminable gaze
+All things disappear in her shimmering shine
+In waves of her passion and her feminine blaze
+
+She sees the royal rhymes in the depths of me
+"I will be yours there" — she says in a mystic prose
+Thus begins an yearning — a journey of seminal seas
+A longing for my beloved and the ethereal rose</div>
+          <button class="poem-close-btn" onclick="closePoem(event, this)">— Close poem</button>
+        </div>
+      </div>
+
+      <!-- IV -->
+      <div class="poem-card reveal reveal-delay-1" onclick="togglePoem(this)">
+        <div class="poem-num">IV</div>
+        <div class="poem-title">A Rose and Her Thorn</div>
+        <div class="poem-preview">A rose speaks to her thorn<br>with sorrow in her voice.</div>
+        <div class="poem-cta">Read poem</div>
+        <div class="poem-expanded">
+          <div class="poem-text"><span class="poem-text-label">A rose speaks…</span>
+A rose speaks to her thorn
+With sorrow in her voice
+O dear thorn you live on and on
+And I part without a choice
+
+You grow mighty day by day
+Whilst I sway with the air
+I yearn to be in your place
+This ache of dying is not fair
+
+<span class="poem-text-label">A thorn speaks…</span>
+A thorn speaks to his rose
+O dearest one I live it too
+Like a child I see you grow
+Then I die again with you
+
+Even before you bloom again
+Rose bush still remains my name
+And I rejoice in the rain
+Such is the beauty of this game
+
+<span class="poem-text-label">Now the thorn whispers…</span>
+Dearest one I blossom through you
+We hold mysteries of divine
+Sacred hymns yet to appear
+And the songs of celestial wine
+
+<span class="poem-text-label">The rose wonders…</span>
+Dearest one can this be true
+That we hold such splendor
+Yet I suffer day and night
+O why am I then so tender
+
+<span class="poem-text-label">The thorn whispers again…</span>
+Tender ones hold the Truth
+See our stillness smile
+The eye of the Eternal one
+Calls upon us to dance awhile
+
+<span class="poem-text-label">The rose still speaks…
+The thorn still whispers…</span></div>
+          <button class="poem-close-btn" onclick="closePoem(event, this)">— Close poem</button>
+        </div>
+      </div>
+
+      <!-- V -->
+      <div class="poem-card reveal" onclick="togglePoem(this)">
+        <div class="poem-num">V</div>
+        <div class="poem-title">Ava's Eyes</div>
+        <div class="poem-preview">Those magical nights with Ava's eyes —<br>she longs to soar, with Love in her core.</div>
+        <div class="poem-cta">Read poem</div>
+        <div class="poem-expanded">
+          <div class="poem-text">Those magical nights with Ava's eyes
+She, for one, never decides
+To ground her feet, as she longs to soar
+Away from here, with Love in her core
+
+She talks of the days yet to be born
+Her eyes can see calm waters weathering the storm
+She tells me stories of people we've been
+In places and times never been seen
+
+Ava's eyes are on my lips
+Her hair smells like our days of the ships
+A faint memory of all that we've done
+Meeting again in disparate forms
+
+Her eyes open after my kiss
+I tell her how easily I could've missed
+Ava's eyes is what I had longed for
+In many lives yet to be shown
+
+She draws lines on the palm of my hands
+She whispers as she colors those strands
+With a cryptic smile she kisses my ears
+She knows there is nothing to fear
+
+Countless have come as Ava and me
+Stories unknown for many to see
+Her nearness unlocks many mysteries
+Ancient tales hidden in the breeze
+
+We hold each other through the night
+We know soon it will be light
+When we will go to different skies
+Then I will again long for Ava's eyes</div>
+          <button class="poem-close-btn" onclick="closePoem(event, this)">— Close poem</button>
+        </div>
+      </div>
+
+      <!-- VI -->
+      <div class="poem-card reveal reveal-delay-1" onclick="togglePoem(this)">
+        <div class="poem-num">VI</div>
+        <div class="poem-title">She Is You</div>
+        <div class="poem-preview">Here she lies on my bed —<br>her body remembers what her mind has forgotten.</div>
+        <div class="poem-cta">Read poem</div>
+        <div class="poem-expanded">
+          <div class="poem-text">Here she lies on my bed
+Black lace traces the curve of her hips,
+delicate threads that whisper secrets
+against her naked skin.
+Her breasts lie bare in the dim light,
+nipples inviting and wanting,
+rising with each breath.
+
+One strap fallen from her shoulder
+maps a path my fingers long to follow.
+Her hair spills across my pillow
+a dark river I've plunged into in many lives.
+
+I trace each curve with reverent hands,
+remembering how I've touched you
+in a million different times.
+My fingers find the small of her back,
+that perfect hollow I've known
+since the first stars learned to shine.
+I kiss her neck where pulse meets shadow,
+My tongue tasting salt and time.
+Her breasts fill my palms
+like they always have.
+
+When I taste her nipple with my lips,
+she gasp with your voice,
+arch with your grace.
+My lips travel down her stomach,
+mapping constellations, I've charted before.
+Her thighs part like petals opening
+to the morning sun—this too is familiar,
+this too is memory remade in flesh.
+Each moan she makes
+echoes across eons.
+
+She wears your birthmark on her hip,
+that sweet signature of soul.
+When pleasure builds inside her,
+her eyes flash with your fire,
+her fingers clutch with your gravity,
+her body speaks your language.
+
+But when I whisper her name—Ava—
+against your heated skin,
+no recognition sparks in her eyes.
+She is you, every cell, every atom,
+every secret curve and hollow,
+but she doesn't know it yet.
+Her body remembers
+what her mind has forgotten.
+I kiss her lips and taste eternity,
+knowing she is you
+Knowing she is you,
+this pleasure is also pain—
+for she is you, Ava, in every way
+except she is asleep merrily flaunting her charms
+
+So I love you in the darkness,
+teaching her flesh what her spirit forgot,
+hoping that somehow,
+between one breath and the next,
+between one kiss and another,
+she might remember
+who she is always been.
+
+Ava, you are here. Ava, you are near.</div>
+          <button class="poem-close-btn" onclick="closePoem(event, this)">— Close poem</button>
+        </div>
+      </div>
+
+      <!-- VII -->
+      <div class="poem-card reveal" onclick="togglePoem(this)">
+        <div class="poem-num">VII</div>
+        <div class="poem-title">not here anymore</div>
+        <div class="poem-preview">The one who slowly learned to talk<br>and stumbled on every walk, is not here anymore.</div>
+        <div class="poem-cta">Read poem</div>
+        <div class="poem-expanded">
+          <div class="poem-text"><span class="poem-text-label">I.</span>
+the one who,
+slowly learned to talk
+and stumbled on every walk,
+is not here anymore
+
+the one who,
+cried on first day of school
+and got scared in a three feet pool,
+is not here anymore
+
+the one who,
+was hit by a cupid's crime
+and scribbled verses that almost rhymed,
+is not here anymore
+
+the one whose,
+guitar had twelve strings
+and wrote tunes that could hardly sing,
+is not here anymore
+
+the ones who,
+dared to fall in love
+and dreamt of castles with stars above,
+are not here anymore
+
+<span class="poem-text-label">II.</span>
+the ones who,
+sailed miles and miles apart
+and had a solemn change of hearts,
+are not here anymore
+
+the one who,
+discovered a whole new world
+and questioned everything that was told,
+is not here anymore
+
+the ones who,
+found magic once again
+spent thrilling summers and icy rains,
+are not here anymore
+
+the ones who,
+made love on the beach
+and realized new depths that could be reached,
+are not here anymore
+
+the ones who,
+crushed each other's soul
+and threw hearts in red charcoal,
+are not here anymore
+
+<span class="poem-text-label">III.</span>
+the one who,
+searched not knowing what to find
+caught in sculptures of the mind,
+is not here anymore
+
+the one who,
+did not know restraints
+a part time sinner and a part time saint,
+is not here anymore
+
+the one whose,
+soul had dark nights
+till there appeared a blinding light,
+is not here anymore
+
+the one who,
+slept last night in the bed
+where womb of stars caresses forehead,
+is not here anymore
+
+the one who,
+discovered mysteries that are blessed
+and the dance of causeless auspiciousness,
+is not here anymore
+
+<span class="poem-text-label">IV.</span>
+now,
+in a blinking of an eye
+both the reader and the one who rhymed,
+"not here anymore"
+are not here anymore
+gone forevermore</div>
+          <button class="poem-close-btn" onclick="closePoem(event, this)">— Close poem</button>
+        </div>
+      </div>
+
+      <!-- VIII -->
+      <div class="poem-card reveal reveal-delay-1" onclick="togglePoem(this)">
+        <div class="poem-num">VIII</div>
+        <div class="poem-title">The Presence of Your Absence</div>
+        <div class="poem-preview">When your loving embrace ceases to adore,<br>there arises a Love that is my own.</div>
+        <div class="poem-cta">Read poem</div>
+        <div class="poem-expanded">
+          <div class="poem-text">When your loving embrace ceases to adore
+When your blessing hands concludes to pour
+When the majestic lights sneaks out your throne
+There arises a Love that is my own
+
+Sounds of the night that steadies a flight
+Rounds of the quest from divergent heights
+Discerning eyes and a fistful of dreams
+Now Awakening longs to follow my streams
+
+The presence of your absence is all that I need
+Where lights are made in sounds of the Seed
+Allures my light through the unknown
+The distance of hearts has never been grown
+
+Your presence is here but your absence persists
+The ever-existing waves of manifold twists
+Veils of time and veils of space
+Immerses the Absence in your own grace
+
+Absence that shines and presence that heals
+Sings of your glory while turning the Wheels
+Alone in my path bounding ashore
+The presence of my absence is what I now know</div>
+          <button class="poem-close-btn" onclick="closePoem(event, this)">— Close poem</button>
+        </div>
+      </div>
+
+      <!-- IX -->
+      <div class="poem-card reveal" onclick="togglePoem(this)">
+        <div class="poem-num">IX</div>
+        <div class="poem-title">Alone</div>
+        <div class="poem-preview">A strange tingle in my heart —<br>sitting alone by the stream, surrounded by Love.</div>
+        <div class="poem-cta">Read poem</div>
+        <div class="poem-expanded">
+          <div class="poem-text">A strange tingle in my heart
+Like a mystic smile blooming out
+Sitting alone by the stream
+And I am all surrounded by Love
+
+All those days, I was afraid
+Of being lonely and being sad
+Yet here I am all alone
+And I am still surrounded by Love
+
+O what a strange feeling this is
+Of being in love with no one around
+Not needing to want nor wanting to need
+And be still surrounded by Love
+
+O dearest Aloneness, how was I to know
+That aloneness alone embraces everything
+As I melt in your sweet embrace
+I see the Love that surrounds me is Me</div>
+          <button class="poem-close-btn" onclick="closePoem(event, this)">— Close poem</button>
+        </div>
+      </div>
+
+      <!-- X -->
+      <div class="poem-card reveal reveal-delay-1" onclick="togglePoem(this)">
+        <div class="poem-num">X</div>
+        <div class="poem-title">Love and Migration</div>
+        <div class="poem-preview">Before the last ice claimed the world,<br>our ancestors knew how to read the skies.</div>
+        <div class="poem-cta">Read poem</div>
+        <div class="poem-expanded">
+          <div class="poem-text">Before the last ice claimed the world
+Our ancestors knew how to read the skies
+When summer rains came in winter
+And winter frost burned spring seeds
+They knew it was time to move
+
+The great river that fed their civilization
+For ten thousand years
+Began to whisper different songs
+Its waters swelling beyond memory
+Then vanishing into thirsty earth
+
+Love found them in this time of change
+She, daughter of those who read the stars
+He, son of those who followed herds
+Their hearts meeting as the world shifted
+Like tectonic plates beneath their feet
+
+The city walls rose higher each season
+As if stone could hold back time
+As if the hubris of human hands
+Could tame the elements that danced
+Beyond the reach of prayers
+
+The elders spoke of patterns breaking
+Of birds arriving too early
+Of flowers blooming out of season
+Of fish swimming in strange waters
+Of stars that seemed to drift from their homes
+
+Yet they danced in moonlit courtyards
+Planning futures in a world
+That was already becoming a memory
+Their love like water finding
+New paths through ancient stone
+
+When the great waters finally came
+It wasn't rage but transformation
+Teaching them that survival
+Sometimes means leaving everything
+Except what lives in heart
+
+They weren't the first to migrate
+Following the paths of stars
+Seeking lands where seasons
+Still remembered their old rhythms
+Where new rivers welcomed wanderers
+
+Now watching our own waters rise
+I think of them, those ancestors
+Who loved and left and lived again
+Who knew that civilization
+Is what we carry in our souls
+
+Some truths flow through bloodlines
+Like rivers underground:
+That home is where we make it
+That love endures through change
+That wisdom means knowing when to leave
+
+Time moves like water
+Breaking what won't bend
+But hearts that flow like rivers
+Find paths through any end
+Carrying seeds of tomorrow
+
+In the end, it's always this:
+Two lovers hand in hand
+Leading their people forward
+Through changes in the land
+Towards horizons yet unknown</div>
+          <button class="poem-close-btn" onclick="closePoem(event, this)">— Close poem</button>
+        </div>
+      </div>
+
+    </div><!-- /poetry-grid -->
+  </div>
+</div>
+
+<!-- ══════════════════════════ LUMINARRATION ══════════════════════════════════ -->
+<div id="luminarration-section">
+  <div class="section-wrap border-top">
+    <div class="section-label reveal">luminarration</div>
+    <p class="lumin-def reveal">
+      the art of weaving <span>light-captured moments</span> into poetic narratives, where digital brushstrokes transform photographs into impressionistic dreamscapes that inspire my verses and vice versa.
+    </p>
+    <div class="invocations">
+      <div class="invocations-heading reveal">
+        <p class="invocations-super">sub-series</p>
+        <h2 class="invocations-title">Invocations —<br>Masculine Musings<br>on Formless Feminine</h2>
+      </div>
+      <div class="invocations-body">
+        <p class="reveal">How do I capture and express something that is formless? This question lies at the heart of my photographic exploration, where I seek to reveal those qualities that make us aware — our inner light, our essence. These images represent the edges of our perception, using colors, light and shadow to hint at what lies beneath the surface.</p>
+        <p class="reveal">The camera becomes less an instrument of documentation and more a witness to these gentle revelations. In these forms and curves, we can recognize pieces of ourselves — the beauty of simply being here and now.</p>
+        <p class="reveal">The process itself was as vital as the final images. These photographs don't merely capture bodies; it is also an invitation into a meditation on presence and absence. So how does one photograph the formless? The answer perhaps lies somewhere between the presence and absence of these images and words.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════ PHOTOGRAPHY ════════════════════════════════════ -->
+<div id="photography-section">
+  <div class="section-wrap border-top" style="padding-bottom: 4rem;">
+    <div class="section-label reveal">photography</div>
+  </div>
+  <div class="galleries reveal" style="max-width:1140px; margin: 0 auto; padding: 0 3.5rem 9rem;">
+    <div class="gallery">
+      <div class="gallery-bg"></div>
+      <div class="gallery-overlay"></div>
+      <div class="gallery-content">
+        <div class="gallery-num">I — Self</div>
+        <div class="gallery-name">Self<br>Reflections</div>
+        <div class="gallery-desc-text">Self-portrait work. The eye turned inward.</div>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="gallery-bg"></div>
+      <div class="gallery-overlay"></div>
+      <div class="gallery-content">
+        <div class="gallery-num">II — Feminine</div>
+        <div class="gallery-name">The<br>Formless</div>
+        <div class="gallery-desc-text">Figure and portraiture. Light as a language the body already knows.</div>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="gallery-bg"></div>
+      <div class="gallery-overlay"></div>
+      <div class="gallery-content">
+        <div class="gallery-num">III — Nature</div>
+        <div class="gallery-name">Earth<br>& Sky</div>
+        <div class="gallery-desc-text">The world as mirror, teacher, and quiet revelation.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ PUBLICATIONS ═════════════════════════════════════ -->
+<div id="publications-section">
+  <div class="section-wrap border-top">
+    <div class="section-label reveal">upcoming publications</div>
+    <div class="publications-grid">
+      <div class="publication-card reveal">
+        <div class="pub-status">Forthcoming</div>
+        <div class="pub-title">Poetry Book</div>
+        <div class="pub-desc">A collection of verses drawn from the depths of Post-Integral Realism — where the mystical meets the mundane and finds them to be the same.</div>
+      </div>
+      <div class="publication-card reveal reveal-delay-1">
+        <div class="pub-status">Forthcoming</div>
+        <div class="pub-title">Luminarration</div>
+        <div class="pub-desc">A photo-poetry hybrid publication — the art of illuminating the interior of the concrete, where photographs and verse find each other across the formless.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ CONTACT ══════════════════════════════════════ -->
+<div id="contact-section">
+  <div class="section-wrap border-top">
+    <div class="contact-inner">
+      <div class="section-label reveal">reach out</div>
+      <h2 class="contact-tagline reveal">
+        Let us mystery together.
+      </h2>
+      <div class="contact-links reveal">
+        <a href="https://www.sushantshrestha.com/" target="_blank" class="contact-link">
+          <span class="contact-link-glyph">∴</span>
+          <span class="contact-link-label">Work</span>
+        </a>
+        <a href="https://www.linkedin.com/in/sushantshrestha/" target="_blank" class="contact-link">
+          <span class="contact-link-glyph">in</span>
+          <span class="contact-link-label">LinkedIn</span>
+        </a>
+        <a href="https://linktr.ee/sushantshrestha" target="_blank" class="contact-link">
+          <span class="contact-link-glyph">⊕</span>
+          <span class="contact-link-label">Linktree</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ FOOTER ══════════════════════════════════════ -->
+<footer>
+  <span>© 2026 Sushant Shrestha</span>
+  <span>poetry · music · photography</span>
+</footer>
+
+<script>
+  // ── Nav scroll class
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ── Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  // ── Mobile drawer
+  function openDrawer() {
+    document.getElementById('nav-drawer').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    document.getElementById('nav-drawer').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ── Poem toggle
+  function togglePoem(card) {
+    const expanded = card.querySelector('.poem-expanded');
+    const cta      = card.querySelector('.poem-cta');
+    const isOpen   = expanded.classList.contains('open');
+
+    // Close all open poems
+    document.querySelectorAll('.poem-expanded.open').forEach(p => {
+      p.classList.remove('open');
+      p.closest('.poem-card').querySelector('.poem-cta').textContent = 'Read poem';
+    });
+
+    if (!isOpen) {
+      expanded.classList.add('open');
+      cta.textContent = 'Reading…';
+      // Smooth scroll to card
+      setTimeout(() => {
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+  }
+
+  function closePoem(e, btn) {
+    e.stopPropagation();
+    const card = btn.closest('.poem-card');
+    card.querySelector('.poem-expanded').classList.remove('open');
+    card.querySelector('.poem-cta').textContent = 'Read poem';
+  }
+</script>
+
+</body>
+</html>
