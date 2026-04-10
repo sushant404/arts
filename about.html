@@ -454,6 +454,11 @@ a.pen-name:hover { color: #1a1a1a; }
 .poem-full p + p {
   margin-top: 0.75rem;
 }
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
@@ -494,6 +499,14 @@ a.pen-name:hover { color: #1a1a1a; }
     <span><a href="https://www.sushantshrestha.com" target="_blank" rel="noopener noreferrer">sushantshrestha.com</a> · <a href="https://www.tenderanomalies.com" target="_blank" rel="noopener noreferrer">tenderanomalies.com</a></span>
   </footer>
 </div>
+
+<script>
+document.addEventListener('contextmenu', function(e) {
+  if (e.target.tagName === 'IMG') {
+    e.preventDefault();
+  }
+});
+</script>
 
 </body>
 </html>

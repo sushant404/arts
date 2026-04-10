@@ -558,6 +558,29 @@ a.pen-name:hover { color: #1a1a1a; }
 .photo-subnav a.is-active {
   color: #1a1a1a;
 }
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+.gallery-strip img,
+.photo-strip img {
+  pointer-events: auto;
+}
+.photo-image-wrap {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.photo-image-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: transparent;
+}
 </style>
 </head>
 <body>
@@ -641,6 +664,12 @@ a.pen-name:hover { color: #1a1a1a; }
 
   <script>
   (function () {
+    document.addEventListener('contextmenu', function(e) {
+      if (e.target.tagName === 'IMG' || e.target.classList.contains('photo-image-overlay')) {
+        e.preventDefault();
+      }
+    });
+
     var lb = document.getElementById('lightbox');
     if (!lb) return;
     var lbImg = lb.querySelector('img');
@@ -665,6 +694,17 @@ a.pen-name:hover { color: #1a1a1a; }
       originals.forEach(function (img) {
         strip.appendChild(img.cloneNode(true));
       });
+
+      Array.prototype.slice.call(strip.querySelectorAll('img')).forEach(function (img) {
+        var wrap = document.createElement('div');
+        wrap.className = 'photo-image-wrap';
+        var overlay = document.createElement('div');
+        overlay.className = 'photo-image-overlay';
+        img.parentNode.insertBefore(wrap, img);
+        wrap.appendChild(img);
+        wrap.appendChild(overlay);
+      });
+
       var state = { strip: strip, paused: false };
       strip.addEventListener('mouseenter', function () {
         state.paused = true;
@@ -675,8 +715,10 @@ a.pen-name:hover { color: #1a1a1a; }
       stripStates.push(state);
     });
 
-    document.querySelectorAll('.photo-strip img').forEach(function (img) {
-      img.addEventListener('click', function () {
+    document.querySelectorAll('.photo-image-wrap').forEach(function (wrap) {
+      wrap.addEventListener('click', function () {
+        var img = wrap.querySelector('img');
+        if (!img) return;
         openLightbox(img.currentSrc || img.src);
       });
     });

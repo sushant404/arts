@@ -446,6 +446,11 @@ a.pen-name:hover { color: #1a1a1a; }
 .poem-full p + p {
   margin-top: 0.75rem;
 }
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
@@ -680,6 +685,12 @@ a.pen-name:hover { color: #1a1a1a; }
 
 <script>
 (function () {
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+    }
+  });
+
   var index = document.querySelector('.poem-index');
   if (!index) return;
 
