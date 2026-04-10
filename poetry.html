@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poetry — Ansui Ryusho</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Inconsolata:wght@300;400&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.arts {
+  font-family: 'Crimson Pro', serif;
+  color: #1a1a1a;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+  background: #ffffff;
+  min-height: 100vh;
+}
+
+/* NAV */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 2rem 0 1.5rem;
+  border-bottom: 0.5px solid rgba(0,0,0,0.1);
+  margin-bottom: 0;
+}
+.pen-name {
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+.pen-sub {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: #888;
+  margin-top: 2px;
+}
+.nav-top {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.nav-top a {
+  font-family: 'Inconsolata', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #666;
+  text-decoration: none;
+}
+.nav-top a:hover { color: #1a1a1a; }
+
+/* HERO */
+.hero {
+  padding: 4rem 0 3rem;
+  border-bottom: 0.5px solid rgba(0,0,0,0.08);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.hero-left {}
+.hero-eyebrow {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: #999;
+  margin-bottom: 1.25rem;
+}
+.hero-declaration {
+  font-family: 'EB Garamond', serif;
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.2;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+.hero-media-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.media-pill {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 4px 12px;
+  border: 0.5px solid rgba(0,0,0,0.18);
+  border-radius: 20px;
+  color: #666;
+}
+
+/* FEATURED POEM */
+.featured-poem {
+  padding: 2rem;
+  border: 0.5px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  position: relative;
+}
+.featured-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: #999;
+  margin-bottom: 1rem;
+}
+.poem-excerpt {
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.9;
+  color: #555;
+}
+.poem-excerpt strong {
+  font-style: normal;
+  font-weight: 400;
+  color: #1a1a1a;
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 14px;
+}
+.read-link {
+  font-family: 'Inconsolata', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #999;
+  text-decoration: none;
+  display: block;
+  margin-top: 1rem;
+}
+.read-link:hover { color: #1a1a1a; }
+
+/* SECTION DIVIDER */
+.divider {
+  border: none;
+  border-top: 0.5px solid rgba(0,0,0,0.08);
+  margin: 3rem 0;
+}
+
+/* SECTION HEADER */
+.pillars-header {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: #999;
+  margin-bottom: 2rem;
+}
+
+/* THEMATIC PILLARS */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  background: rgba(0,0,0,0.08);
+  border: 0.5px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+.pillar {
+  background: #ffffff;
+  padding: 1.75rem 1.5rem;
+}
+.pillar-glyph {
+  font-family: 'EB Garamond', serif;
+  font-size: 28px;
+  font-style: italic;
+  color: #bbb;
+  margin-bottom: 0.75rem;
+}
+.pillar-name {
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+.pillar-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666;
+  margin-bottom: 1rem;
+}
+.pillar-poems {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pillar-poem-link {
+  font-family: 'Inconsolata', monospace;
+  font-size: 11px;
+  color: #aaa;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  border-left: 1px solid rgba(0,0,0,0.1);
+  padding-left: 8px;
+}
+.pillar-poem-link:hover {
+  color: #1a1a1a;
+  border-left-color: rgba(0,0,0,0.3);
+}
+
+/* ANNOTATION */
+.annotation {
+  background: #f9f7f5;
+  border-left: 2px solid #E24B4A;
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  font-family: 'Inconsolata', monospace;
+  font-size: 12px;
+  color: #666;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+.annotation-label {
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: #A32D2D;
+  margin-bottom: 3px;
+}
+
+/* MUSIC SECTION */
+.music-section {
+  padding: 3rem 0;
+  border-bottom: 0.5px solid rgba(0,0,0,0.08);
+}
+.music-header {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: #999;
+  margin-bottom: 2rem;
+}
+.music-body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.music-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 34px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+.music-desc {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+.music-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.music-link {
+  font-family: 'Inconsolata', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: #666;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.music-link:hover { color: #1a1a1a; }
+.music-aside {
+  padding: 1.5rem;
+  border: 0.5px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+.aside-season {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #999;
+  margin-bottom: 0.5rem;
+}
+.aside-ep {
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+.aside-tracks {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* ALL POEMS */
+.all-poems {
+  padding: 3rem 0;
+  border-bottom: 0.5px solid rgba(0,0,0,0.08);
+}
+.poem-index {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 0.5px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.poem-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 14px 16px;
+  border-bottom: 0.5px solid rgba(0,0,0,0.07);
+  background: #ffffff;
+  cursor: pointer;
+}
+.poem-row:last-child { border-bottom: none; }
+.poem-row:hover { background: #f9f7f5; }
+.poem-row-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  font-style: italic;
+}
+.poem-row-tag {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  color: #aaa;
+  letter-spacing: 0.08em;
+}
+
+/* ABOUT STRIP */
+.about-strip {
+  padding: 3rem 0;
+  border-bottom: 0.5px solid rgba(0,0,0,0.08);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  align-items: start;
+}
+.about-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: #999;
+  padding-top: 4px;
+}
+.about-body-text {
+  font-size: 17px;
+  line-height: 1.85;
+  color: #555;
+}
+.about-body-text em {
+  color: #1a1a1a;
+  font-style: italic;
+}
+
+/* FOOTER */
+.footer {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  color: #aaa;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 620px) {
+  .hero, .pillar-grid, .music-body, .poem-index, .about-strip {
+    grid-template-columns: 1fr;
+  }
+  .hero-declaration { font-size: 30px; }
+}
+
+a.pen-name {
+  color: inherit;
+  text-decoration: none;
+}
+a.pen-name:hover { color: #1a1a1a; }
+
+.poem-block {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.poem-block:last-child > .poem-row {
+  border-bottom: none;
+}
+.poem-full {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.55s ease, padding 0.45s ease;
+  padding: 0 16px;
+  background: #f9f7f5;
+  font-family: 'EB Garamond', serif;
+  font-size: 15px;
+  line-height: 1.85;
+  color: #444;
+  border-top: 0.5px solid rgba(0,0,0,0.06);
+}
+.poem-block.is-open .poem-full {
+  max-height: 4800px;
+  padding-top: 1rem;
+  padding-bottom: 1.25rem;
+}
+.page-placeholder {
+  padding: 5rem 0 4rem;
+  text-align: center;
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: #666;
+  letter-spacing: 0.02em;
+}
+.poem-pending {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  text-align: center;
+  color: #666;
+  padding: 0.5rem 0 0.25rem;
+}
+.about-body-text p + p {
+  margin-top: 1.25rem;
+}
+.poem-full p + p {
+  margin-top: 0.75rem;
+}
+</style>
+</head>
+<body>
+
+<div class="arts">
+
+  <nav class="topbar">
+    <div>
+      <a href="index.html" class="pen-name">Ansui Ryusho</a>
+      <div class="pen-sub">PEN NAME OF SUSHANT SHRESTHA</div>
+    </div>
+    <div class="nav-top">
+      <a href="poetry.html">Poetry</a>
+      <a href="music.html">Music</a>
+      <a href="photography.html">Photography</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <section class="all-poems">
+    <div class="pillars-header">ALL POEMS</div>
+    <div class="poem-index">
+
+      <div class="poem-block" id="poem-we-mystery-together">
+        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
+          <span class="poem-row-title">We Mystery Together</span>
+          <span class="poem-row-tag">SELF · NATURE</span>
+        </div>
+        <div class="poem-full">
+          <p>We gather together to feel the heart of the Eternal One,<br>As the ancient sun ascends, reclaiming a new dawn.</p>
+          <p>Again, I seek and find my beloved in boundless spaces,<br>A quest of the time as my beloved’s smile graces myriad faces.</p>
+          <p>We journey together,<br>We mystery together.</p>
+          <p>Step into the beat and hear the Ancient One sing,<br>Songs of the heights are the spans of our depths.</p>
+          <p>The fire amidst our circle is borne by the Elders’ bones,<br>Invoking portals of new perceptions and the spaces between our breaths.</p>
+          <p>We dive together; we embrace together; we climb together.<br>We mystery together.</p>
+          <p>Waking up and growing up does not mean much without your embrace,<br>Showing up and cleaning up remains undone without you by my side.</p>
+          <p>Teaming up and beaming up is now what I long for,<br>As our new world begins and manifold kosmos collide.</p>
+          <p>We team together; we beam together.<br>We mystery together.</p>
+          <p>In the dense heart space of our mystery together,<br>Each moment in perpetuity drenched in intimacy.</p>
+          <p>Feeling the rush of cold springs upon our skin,<br>We initiate each other into an unfolding symphony.</p>
+          <p>We heart together; we co-heart together.<br>We mystery together.</p>
+          <p>The Quadrants open like the windows in our hearts,<br>Our Metamodern sincerity reminds us of our ancestral bliss.</p>
+          <p>Through integration and oscillation, we dance down the mountain,<br>Unknowing and re-knowing reality like a beloved's first kiss.</p>
+          <p>We dance together; we synthesize together; we whole together.<br>We mystery together.</p>
+          <p>While our AIs hallucinate and rendezvous in the liminal spaces,<br>We risk the loss of our nature and nurture the tragedy of gaining Gods' gaze.</p>
+          <p>Quantum computing awakens a new Indra's Net,<br>While the meta-crisis calls forth a trans-lineage Shamanic engage.</p>
+          <p>We decode together; we recode together.<br>We source code together.<br>We mystery together.</p>
+          <p>Listen to my secret, as I can only speak this to you,<br>Longing is the deliciousness of duality;<br>Belonging is nonduality relishing duality.</p>
+          <p>There are endless stages beyond the Ultimate,<br>All are leading to a Chemical Wedding of diverging finalities.</p>
+          <p>That is why we long together; we belong together; we relish together.<br>We are a mystery together, and<br>We mystery together.</p>
+        </div>
+      </div>
+
+      <div class="poem-block" id="poem-presence-of-your-absence">
+        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
+          <span class="poem-row-title">Presence of Your Absence</span>
+          <span class="poem-row-tag">FEMININE</span>
+        </div>
+        <div class="poem-full">
+          <p>When your loving embrace ceases to adore<br>When your blessing hands concludes to pour<br>When the majestic lights sneaks out your throne<br>There arises a Love that is my own</p>
+          <p>Sounds of the night that steadies a flight<br>Rounds of the quest from divergent heights<br>Discerning eyes and a fistful of dreams<br>Now Awakening longs to follow my streams</p>
+          <p>The presence of your absence is all that I need<br>Where lights are made in sounds of the Seed<br>Allures my light through the unknown<br>The distance of hearts has never been grown</p>
+          <p>Your presence is here but your absence persists<br>The ever-existing waves of manifold twists<br>Veils of time and veils of space<br>Immerses the Absence in your own grace</p>
+          <p>Absence that shines and presence that heals<br>Sings of your glory while turning the Wheels<br>Alone in my path bounding ashore<br>The presence of my absence is what I now know</p>
+        </div>
+      </div>
+
+      <div class="poem-block" id="poem-someday">
+        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
+          <span class="poem-row-title">Someday</span>
+          <span class="poem-row-tag">SELF</span>
+        </div>
+        <div class="poem-full">
+          <p>They will understand, someday,<br>Why you must forge your own path.</p>
+          <p>Though your mind searches endlessly for answers,<br>The whispers of your heart hold truth.</p>
+          <p>Even as emotions swirl like tempests,<br>And confusion clouds your way,<br>Choose the life that speaks your name—<br>It's yours alone to claim.</p>
+          <p>The road ahead may be uncertain,<br>But you are not astray.<br>Your destination may be hidden,<br>But home lives in your veins.</p>
+          <p>Those gentle whispers in your heart<br>Are melodies unsung,<br>Keep walking till you find your voice<br>And let your song ring true.</p>
+          <p>In solitude, you may feel hollow,<br>Let this truth set you free:<br>It's in the depths of being alone<br>That you find who you're meant to be.</p>
+          <p>One day they'll understand your journey,<br>And dance to your soul's refrain.<br>Then you'll see that all along,<br>You carried home within.</p>
+          <p>Let tears fall freely, let your heart crack open,<br>Let every feeling flow through you and show.<br>This is the price your song demands,<br>The cost of loving who you are.</p>
+          <p>For when you embrace yourself completely,<br>Your love will flood the world.<br>They'll understand your solitary path<br>When they feel your heart's deep truth.</p>
+          <p>Through darkness and through light you'll travel,<br>Your song forever on your lips.<br>It will be your compass, be your healing,<br>Guide you through the mist.</p>
+          <p>And there will come a day of wonder<br>When you pause to truly see<br>The infinite mystery that you are—<br>A universe set free.</p>
+        </div>
+      </div>
+
+      <div class="poem-block" id="poem-avas-eyes">
+        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
+          <span class="poem-row-title">Ava's Eyes</span>
+          <span class="poem-row-tag">FEMININE</span>
+        </div>
+        <div class="poem-full">
+          <p>Those magical nights with Ava’s eyes<br>She, for one, never decides<br>To ground her feet, as she longs to soar<br>Away from here, with Love in her core</p>
+          <p>She talks of the days yet to be born<br>Her eyes can see calm waters weathering the storm<br>She tells me stories of people we’ve been<br>In places and times never been seen</p>
+          <p>Ava’s eyes are on my lips<br>Her hair smells like our days of the ships<br>A faint memory of all that we’ve done<br>Meeting again in disparate forms</p>
+          <p>Her eyes open after my kiss<br>I tell her how easily I could’ve missed<br>Ava’s eyes is what I had longed for<br>In many lives yet to be shown</p>
+          <p>She draws lines on the palm of my hands<br>She whispers as she colors those strands<br>With a cryptic smile she kisses my ears<br>She knows there is nothing to fear</p>
+          <p>Countless have come as Ava and me<br>Stories unknown for many to see<br>Her nearness unlocks many mysteries<br>Ancient tales hidden in the breeze</p>
+          <p>We hold each other through the night<br>We know soon it will be light<br>When we will go to different skies<br>Then I will again long for Ava’s eyes</p>
+        </div>
+      </div>
+
+      <div class="poem-block" id="poem-i-will-be-yours-there">
+        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
+          <span class="poem-row-title">I will be yours there</span>
+          <span class="poem-row-tag">FEMININE</span>
+        </div>
+        <div class="poem-full">
+          <p>She calls me to the greatest heights<br>As I sway and stumble through my way<br>She speaks tenderly of my eclipsed light<br>In her palatial presence on the seraphic bay</p>
+          <p>I have nowhere to go and nowhere to hide<br>Because she seizes me with an easy smile<br>Leaving me with laughter and shattered pride<br>Her gift of sacred humiliation and a celestial exile</p>
+          <p>In the clouds and through the skies<br>She holds me close in shivering nights<br>Whispering words of manifold guise<br>She calls me back to my greatest heights</p>
+          <p>Her golden hair entangles with mine<br>While our eyes meet in interminable gaze<br>All things disappear in her shimmering shine<br>In waves of her passion and her feminine blaze</p>
+          <p>She sees the royal rhymes in the depths of me<br>“I will be yours there” - she says in a mystic prose<br>Thus begins an yearning - a journey of seminal seas<br>A longing for my beloved and the ethereal rose</p>
+        </div>
+      </div>
+
+      <div class="poem-block" id="poem-she-is-you">
+        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
+          <span class="poem-row-title">She Is You</span>
+          <span class="poem-row-tag">FEMININE</span>
+        </div>
+        <div class="poem-full">
+          <p>Here she lies on my bed<br>Black lace traces the curve of her hips,<br>delicate threads that whisper secrets<br>against her naked skin.</p>
+          <p>Her breasts lie bare in the dim light,<br>nipples inviting and wanting,<br>rising with each breath.<br>One strap fallen from her shoulder<br>maps a path my fingers long to follow.</p>
+          <p>Her hair spills across my pillow<br>a dark river I've plunged into in many lives.<br>I trace each curve with reverent hands,<br>remembering how I've touched you<br>in a million different times.</p>
+          <p>My fingers find the small of her back,<br>that perfect hollow I've known<br>since the first stars learned to shine.<br>I kiss her neck where pulse meets shadow,<br>My tongue tasting salt and time.</p>
+          <p>Her breasts fill my palms<br>like they always have.<br>When I taste her nipple with my lips,<br>she gasp with your voice,<br>arch with your grace.</p>
+          <p>My lips travel down her stomach,<br>mapping constellations, I've charted before.<br>Her thighs part like petals opening<br>to the morning sun—this too is familiar,<br>this too is memory remade in flesh.</p>
+          <p>Each moan she makes<br>echoes across eons.<br>She wears your birthmark on her hip,<br>that sweet signature of soul.<br>When pleasure builds inside her,<br>her eyes flash with your fire,<br>her fingers clutch with your gravity,<br>her body speaks your language.</p>
+          <p>But when I whisper her name—Ava—<br>against your heated skin,<br>no recognition sparks in her eyes.</p>
+          <p>She is you, every cell, every atom,<br>every secret curve and hollow,<br>but she doesn't know it yet.<br>Her body remembers<br>what her mind has forgotten.</p>
+          <p>I kiss her lips and taste eternity,<br>knowing she is you<br>Knowing she is you,<br>this pleasure is also pain—<br>for she is you, Ava, in every way<br>except she is asleep merrily flaunting her charms</p>
+          <p>So I love you in the darkness,<br>teaching her flesh what her spirit forgot,<br>hoping that somehow,<br>between one breath and the next,<br>between one kiss and another,<br>she might remember<br>who she is always been.</p>
+          <p>Ava, you are here. Ava, you are near.</p>
+        </div>
+      </div>
+
+      <div class="poem-block" id="poem-a-rose-and-her-thorn">
+        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
+          <span class="poem-row-title">A Rose and Her Thorn</span>
+          <span class="poem-row-tag">FEMININE · NATURE</span>
+        </div>
+        <div class="poem-full">
+          <p>A rose speaks…</p>
+          <p>A rose speaks to her thorn<br>With sorrow in her voice<br>O dear thorn you live on and on<br>And I part without a choice</p>
+          <p>You grow mighty day by day<br>Whilst I sway with the air<br>I yearn to be in your place<br>This ache of dying is not fair</p>
+          <p>A thorn speaks…</p>
+          <p>A thorn speaks to his rose<br>O dearest one I live it too<br>Like a child I see you grow<br>Then I die again with you</p>
+          <p>Even before you bloom again<br>Rose bush still remains my name<br>And I rejoice in the rain<br>Such is the beauty of this game</p>
+          <p>Now the thorn whispers…<br>Dearest one I blossom through you<br>We hold mysteries of divine<br>Sacred hymns yet to appear<br>And the songs of celestial wine</p>
+          <p>The rose wonders…<br>Dearest one can this be true<br>That we hold such splendor<br>Yet I suffer day and night<br>O why am I then so tender</p>
+          <p>The thorn whispers again…<br>Tender ones hold the Truth<br>See our stillness smile<br>The eye of the Eternal one<br>Calls upon us to dance awhile</p>
+          <p>The rose still speaks…<br>The thorn still whispers…</p>
+        </div>
+      </div>
+
+      <div class="poem-block" id="poem-not-here-anymore">
+        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
+          <span class="poem-row-title">not here anymore</span>
+          <span class="poem-row-tag">SELF</span>
+        </div>
+        <div class="poem-full">
+          <p>I.</p>
+          <p>the one who,<br>slowly learned to talk<br>and stumbled on every walk,<br>is not here anymore</p>
+          <p>the one who,<br>cried on first day of school<br>and got scared in a three feet pool,<br>is not here anymore</p>
+          <p>the one who,<br>was hit by a cupid’s crime<br>and scribbled verses that almost rhymed,<br>is not here anymore</p>
+          <p>the one whose,<br>guitar had twelve strings<br>and wrote tunes that could hardly sing,<br>is not here anymore</p>
+          <p>the ones who,<br>dared to fall in love<br>and dreamt of castles with stars above,<br>are not here anymore</p>
+          <p>II.</p>
+          <p>the ones who,<br>sailed miles and miles apart<br>and had a solemn change of hearts,<br>are not here anymore</p>
+          <p>the one who,<br>discovered a whole new world<br>and questioned everything that was told,<br>is not here anymore</p>
+          <p>the ones who,<br>found magic once again<br>spent thrilling summers and icy rains,<br>are not here anymore</p>
+          <p>the ones who,<br>made love on the beach<br>and realized new depths that could be reached,<br>are not here anymore</p>
+          <p>the ones who,<br>crushed each other’s soul<br>and threw hearts in red charcoal,<br>are not here anymore</p>
+          <p>III.</p>
+          <p>the one who,<br>searched not knowing what to find<br>caught in sculptures of the mind,<br>is not here anymore</p>
+          <p>the one who,<br>did not know restraints<br>a part time sinner and a part time saint,<br>is not here anymore</p>
+          <p>the one whose,<br>soul had dark nights<br>till there appeared a blinding light,<br>is not here anymore</p>
+          <p>the one who,<br>slept last night in the bed<br>where womb of stars caresses forehead,<br>is not here anymore</p>
+          <p>the one who,<br>discovered mysteries that are blessed<br>and the dance of causeless auspiciousness,<br>is not here anymore</p>
+          <p>IV.</p>
+          <p>now,<br>in a blinking of an eye<br>both the reader and the one who rhymed,<br>“not here anymore”<br>are not here anymore<br>gone forevermore</p>
+        </div>
+      </div>
+
+      <div class="poem-block" id="poem-love-and-migration">
+        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
+          <span class="poem-row-title">Love and Migration</span>
+          <span class="poem-row-tag">NATURE</span>
+        </div>
+        <div class="poem-full">
+          <p>Before the last ice claimed the world<br>Our ancestors knew how to read the skies<br>When summer rains came in winter<br>And winter frost burned spring seeds<br>They knew it was time to move</p>
+          <p>The great river that fed their civilization<br>For ten thousand years<br>Began to whisper different songs<br>Its waters swelling beyond memory<br>Then vanishing into thirsty earth</p>
+          <p>Love found them in this time of change<br>She, daughter of those who read the stars<br>He, son of those who followed herds<br>Their hearts meeting as the world shifted<br>Like tectonic plates beneath their feet</p>
+          <p>The city walls rose higher each season<br>As if stone could hold back time<br>As if the hubris of human hands<br>Could tame the elements that danced<br>Beyond the reach of prayers</p>
+          <p>The elders spoke of patterns breaking<br>Of birds arriving too early<br>Of flowers blooming out of season<br>Of fish swimming in strange waters<br>Of stars that seemed to drift from their homes</p>
+          <p>Yet they danced in moonlit courtyards<br>Planning futures in a world<br>That was already becoming a memory<br>Their love like water finding<br>New paths through ancient stone</p>
+          <p>When the great waters finally came<br>It wasn't rage but transformation<br>Teaching them that survival<br>Sometimes means leaving everything<br>Except what lives in heart</p>
+          <p>They weren't the first to migrate<br>Following the paths of stars<br>Seeking lands where seasons<br>Still remembered their old rhythms<br>Where new rivers welcomed wanderers</p>
+          <p>Now watching our own waters rise<br>I think of them, those ancestors<br>Who loved and left and lived again<br>Who knew that civilization<br>Is what we carry in our souls</p>
+          <p>Some truths flow through bloodlines<br>Like rivers underground:<br>That home is where we make it<br>That love endures through change<br>That wisdom means knowing when to leave</p>
+          <p>Time moves like water<br>Breaking what won't bend<br>But hearts that flow like rivers<br>Find paths through any end<br>Carrying seeds of tomorrow</p>
+          <p>In the end, it's always this:<br>Two lovers hand in hand<br>Leading their people forward<br>Through changes in the land<br>Towards horizons yet unknown</p>
+        </div>
+      </div>
+
+      <div class="poem-block" id="poem-alone">
+        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
+          <span class="poem-row-title">Alone</span>
+          <span class="poem-row-tag">SELF</span>
+        </div>
+        <div class="poem-full">
+          <p>A strange tingle in my heart<br>Like a mystic smile blooming out<br>Sitting alone by the stream<br>And I am all surrounded by Love</p>
+          <p>All those days, I was afraid<br>Of being lonely and being sad<br>Yet here I am all alone<br>And I am still surrounded by Love</p>
+          <p>O what a strange feeling this is<br>Of being in love with no one around<br>Not needing to want nor wanting to need<br>And be still surrounded by Love</p>
+          <p>O dearest Aloneness, how was I to know<br>That aloneness alone embraces everything<br>As I melt in your sweet embrace<br>I see the Love that surrounds me is Me</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>© 2026 Ansui Ryusho · Sushant Shrestha</span>
+    <span>arts.sushantshrestha.com</span>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var index = document.querySelector('.poem-index');
+  if (!index) return;
+
+  function closeAll() {
+    index.querySelectorAll('.poem-block').forEach(function (block) {
+      block.classList.remove('is-open');
+      var row = block.querySelector('.poem-row');
+      if (row) row.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function openBlock(block) {
+    closeAll();
+    block.classList.add('is-open');
+    var row = block.querySelector('.poem-row');
+    if (row) row.setAttribute('aria-expanded', 'true');
+  }
+
+  index.querySelectorAll('.poem-row').forEach(function (row) {
+    row.addEventListener('click', function () {
+      var block = row.closest('.poem-block');
+      if (!block) return;
+      if (block.classList.contains('is-open')) {
+        closeAll();
+      } else {
+        openBlock(block);
+      }
+    });
+    row.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        row.click();
+      }
+    });
+  });
+
+  var hash = window.location.hash;
+  if (hash) {
+    var el = document.querySelector(hash);
+    if (el && el.classList.contains('poem-block')) {
+      openBlock(el);
+      requestAnimationFrame(function () {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
