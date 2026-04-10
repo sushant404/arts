@@ -428,6 +428,79 @@ a.pen-name:hover { color: #1a1a1a; }
 .poem-full p + p {
   margin-top: 0.75rem;
 }
+
+/* PHOTOGRAPHY GALLERY */
+.photo-gallery {
+  padding-top: 3rem;
+}
+.photo-section {
+  margin-bottom: 0;
+}
+.photo-section-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: #999;
+  margin-bottom: 0.5rem;
+}
+.photo-section-desc {
+  font-family: 'EB Garamond', serif;
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.65;
+  color: #666;
+  margin-bottom: 1.25rem;
+}
+.photo-strip {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.photo-strip::-webkit-scrollbar {
+  display: none;
+}
+.photo-strip img {
+  height: 420px;
+  width: auto;
+  object-fit: cover;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity 0.3s ease;
+}
+.photo-strip img:hover {
+  opacity: 0.85;
+}
+.photo-section-divider {
+  border: none;
+  border-top: 0.5px solid rgba(0,0,0,0.08);
+  margin: 3rem 0;
+}
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  cursor: pointer;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+.lightbox.is-open {
+  display: flex;
+}
+.lightbox img {
+  max-height: 90vh;
+  max-width: 90vw;
+  object-fit: contain;
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
@@ -448,12 +521,124 @@ a.pen-name:hover { color: #1a1a1a; }
     </div>
   </nav>
 
-  <p class="page-placeholder">Coming soon</p>
+  <div class="photo-gallery">
 
+    <section class="photo-section" aria-labelledby="photo-label-self">
+      <div class="photo-section-label" id="photo-label-self">SELF</div>
+      <p class="photo-section-desc">The interior witness.</p>
+      <div class="photo-strip">
+        <img src="assets/images/self/self1.png" alt="">
+        <img src="assets/images/self/self2.png" alt="">
+        <img src="assets/images/self/self3.png" alt="">
+        <img src="assets/images/self/self4.png" alt="">
+        <img src="assets/images/self/self5.png" alt="">
+        <img src="assets/images/self/self6.png" alt="">
+      </div>
+      <hr class="photo-section-divider">
+    </section>
+
+    <section class="photo-section" aria-labelledby="photo-label-feminine">
+      <div class="photo-section-label" id="photo-label-feminine">FEMININE</div>
+      <p class="photo-section-desc">The beloved as portal.</p>
+      <div class="photo-strip">
+        <img src="assets/images/feminine/fem1.png" alt="">
+        <img src="assets/images/feminine/fem2.png" alt="">
+        <img src="assets/images/feminine/fem3.jpg" alt="">
+        <img src="assets/images/feminine/fem4.png" alt="">
+        <img src="assets/images/feminine/fem5.png" alt="">
+      </div>
+      <hr class="photo-section-divider">
+    </section>
+
+    <section class="photo-section" aria-labelledby="photo-label-nature">
+      <div class="photo-section-label" id="photo-label-nature">NATURE</div>
+      <p class="photo-section-desc">The world as mirror and teacher.</p>
+      <div class="photo-strip">
+        <img src="assets/images/nature/nature1.JPG" alt="">
+        <img src="assets/images/nature/nature2.JPG" alt="">
+        <img src="assets/images/nature/nature3.JPG" alt="">
+        <img src="assets/images/nature/nature4.JPG" alt="">
+        <img src="assets/images/nature/nature5.JPG" alt="">
+        <img src="assets/images/nature/nature6.jpg" alt="">
+        <img src="assets/images/nature/nature7.jpg" alt="">
+        <img src="assets/images/nature/nature8.jpg" alt="">
+        <img src="assets/images/nature/nature9.jpg" alt="">
+        <img src="assets/images/nature/nature10.JPG" alt="">
+      </div>
+    </section>
+
+  </div>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Image">
+    <img src="" alt="">
+  </div>
+
+  <script>
+  (function () {
+    var lb = document.getElementById('lightbox');
+    if (!lb) return;
+    var lbImg = lb.querySelector('img');
+    function openLightbox(src) {
+      lbImg.src = src;
+      lbImg.alt = '';
+      lb.classList.add('is-open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lb.classList.remove('is-open');
+      lb.setAttribute('aria-hidden', 'true');
+      lbImg.removeAttribute('src');
+      document.body.style.overflow = '';
+    }
+    lb.addEventListener('click', closeLightbox);
+
+    var stripStates = [];
+    document.querySelectorAll('.photo-strip').forEach(function (strip) {
+      var originals = Array.prototype.slice.call(strip.querySelectorAll('img'));
+      originals.forEach(function (img) {
+        strip.appendChild(img.cloneNode(true));
+      });
+      var state = { strip: strip, paused: false };
+      strip.addEventListener('mouseenter', function () {
+        state.paused = true;
+      });
+      strip.addEventListener('mouseleave', function () {
+        state.paused = false;
+      });
+      stripStates.push(state);
+    });
+
+    document.querySelectorAll('.photo-strip img').forEach(function (img) {
+      img.addEventListener('click', function () {
+        openLightbox(img.currentSrc || img.src);
+      });
+    });
+
+    var speedPxPerSec = 40;
+    var lastT = performance.now();
+    function tick(now) {
+      var dt = (now - lastT) / 1000;
+      if (dt > 0.1) dt = 0.1;
+      lastT = now;
+      stripStates.forEach(function (state) {
+        if (state.paused) return;
+        var strip = state.strip;
+        var loopW = strip.scrollWidth / 2;
+        if (loopW < 1) return;
+        strip.scrollLeft += speedPxPerSec * dt;
+        while (strip.scrollLeft >= loopW - 0.5) {
+          strip.scrollLeft -= loopW;
+        }
+      });
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  })();
+  </script>
 
   <footer class="footer">
-    <span>© 2026 Ansui Ryusho · Sushant Shrestha</span>
-    <span>arts.sushantshrestha.com</span>
+    <span>© 2026 Ansui Ryusho · Pacific Northwest · Bay Area</span>
   </footer>
 </div>
 

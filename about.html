@@ -356,6 +356,19 @@
   color: #1a1a1a;
   font-style: italic;
 }
+.about-body-layout {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.about-biopic {
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
 
 /* FOOTER */
 .footer {
@@ -373,6 +386,12 @@
     grid-template-columns: 1fr;
   }
   .hero-declaration { font-size: 30px; }
+  .about-body-layout {
+    grid-template-columns: 1fr;
+  }
+  .about-biopic {
+    width: 120px;
+  }
 }
 
 a.pen-name {
@@ -451,19 +470,21 @@ a.pen-name:hover { color: #1a1a1a; }
 
   <section class="about-strip">
     <div class="about-label">ABOUT ANSUI RYUSHO</div>
-    <div class="about-body-text">
+    <div class="about-body-layout">
+      <img class="about-biopic" src="assets/images/about/biopic.png" alt="">
+      <div class="about-body-text">
       <p>Ansui Ryusho is the pen name of Sushant Shrestha.</p>
       <p>He started writing as a teenager, and for years he traveled — physically, spiritually, inwardly — in search of transcendence. He was convinced that truth lived somewhere beyond the ordinary, and he was willing to go far to find it.</p>
       <p>Then, slowly, something softened. He stopped trying to transcend his wounds and began to love them instead. The broken parts. The unloved corners. The darkness that no amount of seeking had ever dissolved.</p>
       <p>That shift changed everything — the poetry, the music, the eye behind the camera. The work stopped trying to rise above life and started sinking more deeply into it. A Sunday morning. A loved face across a room. The ache of missing someone who is right there.</p>
       <p>This is what he makes things about. Not answers. Just presence. The mystery that lives inside the ordinary, if you're willing to stay long enough to feel it.</p>
+      </div>
     </div>
   </section>
 
 
   <footer class="footer">
-    <span>© 2026 Ansui Ryusho · Sushant Shrestha</span>
-    <span>arts.sushantshrestha.com</span>
+    <span>© 2026 Ansui Ryusho · Pacific Northwest · Bay Area</span>
   </footer>
 </div>
 
