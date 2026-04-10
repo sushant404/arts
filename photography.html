@@ -30,12 +30,17 @@ html {
   right: 0;
   z-index: 100;
   background: #ffffff;
+  padding: 2rem 2rem 1.5rem;
+  border-bottom: 0.5px solid rgba(0,0,0,0.1);
+  margin-bottom: 0;
+}
+.topbar-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 2rem 0 1.5rem;
-  border-bottom: 0.5px solid rgba(0,0,0,0.1);
-  margin-bottom: 0;
 }
 .pen-name {
   font-family: 'EB Garamond', serif;
@@ -377,6 +382,13 @@ html {
   color: #aaa;
   letter-spacing: 0.06em;
 }
+.footer a {
+  color: #aaa;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: #1a1a1a;
+}
 
 @media (max-width: 620px) {
   .hero, .pillar-grid, .music-body, .poem-index, .about-strip {
@@ -553,16 +565,17 @@ a.pen-name:hover { color: #1a1a1a; }
 <div class="arts">
 
   <nav class="topbar">
-    <div>
-      <a href="index.html" class="pen-name">Ansui Ryusho</a>
-      <div class="pen-sub">PEN NAME OF SUSHANT SHRESTHA</div>
-    </div>
-    <div class="nav-top">
-      <a href="poetry.html">Poetry</a>
-      <a href="music.html">Music</a>
-      <a href="photography.html">Photography</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+    <div class="topbar-inner">
+      <div>
+        <a href="index.html" class="pen-name">Ansui Ryusho</a>
+        <div class="pen-sub">PEN NAME OF SUSHANT SHRESTHA</div>
+      </div>
+      <div class="nav-top">
+        <a href="poetry.html">Poetry</a>
+        <a href="music.html">Music</a>
+        <a href="photography.html">Photography</a>
+        <a href="about.html">About</a>
+      </div>
     </div>
   </nav>
 
@@ -720,6 +733,7 @@ a.pen-name:hover { color: #1a1a1a; }
 
   <footer class="footer">
     <span>© 2026 Ansui Ryusho · Pacific Northwest · Bay Area</span>
+    <span><a href="https://www.sushantshrestha.com" target="_blank" rel="noopener noreferrer">sushantshrestha.com</a> · <a href="https://www.tenderanomalies.com" target="_blank" rel="noopener noreferrer">tenderanomalies.com</a></span>
   </footer>
 </div>
 
