@@ -6,6 +6,10 @@
 <title>Photography — Ansui Ryusho</title>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Inconsolata:wght@300;400&display=swap" rel="stylesheet">
 <style>
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(80px + 1.5rem + 14px);
+}
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 .arts {
@@ -13,13 +17,19 @@
   color: #1a1a1a;
   max-width: 820px;
   margin: 0 auto;
-  padding: 0 2rem 4rem;
+  padding: calc(80px + 1.5rem + 14px) 2rem 4rem;
   background: #ffffff;
   min-height: 100vh;
 }
 
 /* NAV */
 .topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -501,6 +511,41 @@ a.pen-name:hover { color: #1a1a1a; }
   object-fit: contain;
   pointer-events: none;
 }
+
+.photo-subnav {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: #ffffff;
+  width: 100%;
+  border-bottom: 0.5px solid rgba(0,0,0,0.08);
+  padding: 0.75rem 0;
+}
+.photo-subnav-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
+}
+.photo-subnav a {
+  font-family: 'Inconsolata', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #999;
+  text-decoration: none;
+}
+.photo-subnav a:hover,
+.photo-subnav a.is-active {
+  color: #1a1a1a;
+}
 </style>
 </head>
 <body>
@@ -521,9 +566,17 @@ a.pen-name:hover { color: #1a1a1a; }
     </div>
   </nav>
 
+  <nav class="photo-subnav" aria-label="Gallery sections">
+    <div class="photo-subnav-inner">
+      <a href="#self">Self</a>
+      <a href="#feminine">Feminine</a>
+      <a href="#nature">Nature</a>
+    </div>
+  </nav>
+
   <div class="photo-gallery">
 
-    <section class="photo-section" aria-labelledby="photo-label-self">
+    <section id="self" class="photo-section" aria-labelledby="photo-label-self">
       <div class="photo-section-label" id="photo-label-self">SELF</div>
       <p class="photo-section-desc">The interior witness.</p>
       <div class="photo-strip">
@@ -537,7 +590,7 @@ a.pen-name:hover { color: #1a1a1a; }
       <hr class="photo-section-divider">
     </section>
 
-    <section class="photo-section" aria-labelledby="photo-label-feminine">
+    <section id="feminine" class="photo-section" aria-labelledby="photo-label-feminine">
       <div class="photo-section-label" id="photo-label-feminine">FEMININE</div>
       <p class="photo-section-desc">The beloved as portal.</p>
       <div class="photo-strip">
@@ -550,7 +603,7 @@ a.pen-name:hover { color: #1a1a1a; }
       <hr class="photo-section-divider">
     </section>
 
-    <section class="photo-section" aria-labelledby="photo-label-nature">
+    <section id="nature" class="photo-section" aria-labelledby="photo-label-nature">
       <div class="photo-section-label" id="photo-label-nature">NATURE</div>
       <p class="photo-section-desc">The world as mirror and teacher.</p>
       <div class="photo-strip">
@@ -634,6 +687,34 @@ a.pen-name:hover { color: #1a1a1a; }
       requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
+
+    (function initPhotoSubnav() {
+      var nav = document.querySelector('.photo-subnav');
+      if (!nav) return;
+      var links = nav.querySelectorAll('a');
+      var ids = ['self', 'feminine', 'nature'];
+      var sections = ids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+      function setActive(id) {
+        links.forEach(function (a) {
+          var on = a.getAttribute('href') === '#' + id;
+          a.classList.toggle('is-active', on);
+          if (on) a.setAttribute('aria-current', 'location');
+          else a.removeAttribute('aria-current');
+        });
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        var hit = entries.filter(function (e) { return e.isIntersecting; });
+        if (!hit.length) return;
+        hit.sort(function (a, b) {
+          return a.boundingClientRect.top - b.boundingClientRect.top;
+        });
+        setActive(hit[0].target.id);
+      }, { threshold: 0, rootMargin: '-40% 0px -40% 0px' });
+      sections.forEach(function (s) { observer.observe(s); });
+      var hashId = location.hash.replace(/^#/, '');
+      if (ids.indexOf(hashId) !== -1) setActive(hashId);
+      else setActive('self');
+    })();
   })();
   </script>
 
