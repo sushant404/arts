@@ -12,13 +12,29 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+@keyframes kenBurns {
+  from {
+    background-size: 110%;
+    background-position: center top;
+  }
+  to {
+    background-size: cover;
+    background-position: center top;
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 body {
   background-image: url('assets/images/feminine/fem4.png');
   background-size: cover;
   background-position: center top;
-  background-attachment: fixed;
   background-repeat: no-repeat;
   min-height: 100vh;
+  animation: kenBurns 2.5s ease-out forwards;
 }
 
 .page-overlay {
@@ -117,17 +133,19 @@ body {
   position: relative;
   flex: 1;
   min-width: 0;
+  opacity: 0;
+  animation: fadeInUp 1.5s ease-out 0.3s forwards;
 }
 .hero-eyebrow {
   font-family: 'Inconsolata', monospace;
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.16em;
   color: rgba(255,255,255,0.4);
   margin-bottom: 0.5rem;
 }
 .hero-declaration {
   font-family: 'EB Garamond', serif;
-  font-size: 28px;
+  font-size: 34px;
   font-weight: 400;
   line-height: 1.2;
   font-style: italic;
@@ -139,24 +157,26 @@ body {
 .featured-poem {
   position: relative;
   flex-shrink: 0;
-  max-width: 300px;
+  max-width: 340px;
   background: rgba(255,255,255,0.07);
   border: 0.5px solid rgba(255,255,255,0.12);
   border-radius: 4px;
-  padding: 0.8rem 1rem;
+  padding: 1.2rem 1.4rem;
+  opacity: 0;
+  animation: fadeInUp 1.5s ease-out 0.6s forwards;
 }
 .featured-label {
   font-family: 'Inconsolata', monospace;
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   color: rgba(255,255,255,0.3);
   margin-bottom: 0.4rem;
 }
 .poem-excerpt {
   font-family: 'EB Garamond', serif;
-  font-size: 13px;
+  font-size: 15px;
   font-style: italic;
-  line-height: 1.6;
+  line-height: 1.75;
   color: rgba(255,255,255,0.65);
 }
 .poem-excerpt strong {
@@ -461,7 +481,7 @@ body {
   .pillar-grid, .music-body, .poem-index, .about-strip {
     grid-template-columns: 1fr;
   }
-  .hero-declaration { font-size: 24px; }
+  .hero-declaration { font-size: 28px; }
   .hero-inner {
     flex-direction: column;
     align-items: stretch;
@@ -636,6 +656,30 @@ document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
   }
 });
+
+(function () {
+  var el = document.body;
+  var parallaxAttached = false;
+
+  function applyParallaxShift() {
+    var scrolled = window.scrollY;
+    var maxScroll = document.body.scrollHeight - window.innerHeight;
+    var percent = maxScroll > 0 ? scrolled / maxScroll : 0;
+    el.style.backgroundPositionY = percent * 30 + '%';
+  }
+
+  function attachParallax() {
+    if (parallaxAttached) return;
+    parallaxAttached = true;
+    window.addEventListener('scroll', applyParallaxShift, { passive: true });
+    applyParallaxShift();
+  }
+
+  el.addEventListener('animationend', function (e) {
+    if (e.animationName !== 'kenBurns') return;
+    attachParallax();
+  });
+})();
 </script>
 
 </body>
