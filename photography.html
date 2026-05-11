@@ -566,13 +566,26 @@ img {
 
   <nav class="photo-subnav" aria-label="Gallery sections">
     <div class="photo-subnav-inner">
-      <a href="#self">Self</a>
       <a href="#feminine">Feminine</a>
+      <a href="#self">Self</a>
       <a href="#nature">Nature</a>
     </div>
   </nav>
 
   <div class="photo-gallery">
+
+    <section id="feminine" class="photo-section" aria-labelledby="photo-label-feminine">
+      <div class="photo-section-label" id="photo-label-feminine">FEMININE</div>
+      <p class="photo-section-desc">The beloved as portal.</p>
+      <div class="photo-strip">
+        <img src="assets/images/feminine/fem1.png" alt="">
+        <img src="assets/images/feminine/fem2.png" alt="">
+        <img src="assets/images/feminine/fem3.jpg" alt="">
+        <img src="assets/images/feminine/fem4.png" alt="">
+        <img src="assets/images/feminine/fem5.png" alt="">
+      </div>
+      <hr class="photo-section-divider">
+    </section>
 
     <section id="self" class="photo-section" aria-labelledby="photo-label-self">
       <div class="photo-section-label" id="photo-label-self">SELF</div>
@@ -584,19 +597,6 @@ img {
         <img src="assets/images/self/self4.png" alt="">
         <img src="assets/images/self/self5.png" alt="">
         <img src="assets/images/self/self6.png" alt="">
-      </div>
-      <hr class="photo-section-divider">
-    </section>
-
-    <section id="feminine" class="photo-section" aria-labelledby="photo-label-feminine">
-      <div class="photo-section-label" id="photo-label-feminine">FEMININE</div>
-      <p class="photo-section-desc">The beloved as portal.</p>
-      <div class="photo-strip">
-        <img src="assets/images/feminine/fem1.png" alt="">
-        <img src="assets/images/feminine/fem2.png" alt="">
-        <img src="assets/images/feminine/fem3.jpg" alt="">
-        <img src="assets/images/feminine/fem4.png" alt="">
-        <img src="assets/images/feminine/fem5.png" alt="">
       </div>
       <hr class="photo-section-divider">
     </section>
@@ -669,7 +669,7 @@ img {
       var nav = document.querySelector('.photo-subnav');
       if (!nav) return;
       var links = nav.querySelectorAll('a');
-      var ids = ['self', 'feminine', 'nature'];
+      var ids = ['feminine', 'self', 'nature'];
       var sections = ids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
       function setActive(id) {
         links.forEach(function (a) {
@@ -690,7 +690,7 @@ img {
       sections.forEach(function (s) { observer.observe(s); });
       var hashId = location.hash.replace(/^#/, '');
       if (ids.indexOf(hashId) !== -1) setActive(hashId);
-      else setActive('self');
+      else setActive('feminine');
     })();
   })();
   </script>
