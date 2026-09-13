@@ -312,56 +312,46 @@
   border-bottom: 0.5px solid rgba(0,0,0,0.08);
 }
 .poem-index {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  border: 0.5px solid rgba(0,0,0,0.1);
-  border-radius: 8px;
-  overflow: hidden;
+  display: block;
 }
-.poem-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 14px 16px;
+.poem-card {
+  padding: 2.4rem 0;
   border-bottom: 0.5px solid rgba(0,0,0,0.07);
-  background: #ffffff;
-  cursor: pointer;
 }
-.poem-row:last-child { border-bottom: none; }
-.poem-row:hover { background: #f9f7f5; }
+.poem-card:first-child { padding-top: 0; }
+.poem-card:last-child { border-bottom: none; }
 .poem-row-title {
   font-family: 'EB Garamond', serif;
   font-size: 16px;
   font-style: italic;
+  color: #1a1a1a;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0.35em 0 0.75em;
 }
+.poem-row-title:hover { color: #1a1a1a; }
 .poem-row-tag {
   font-family: 'Inconsolata', monospace;
   font-size: 10px;
   color: #aaa;
   letter-spacing: 0.08em;
 }
-.poem-permalink {
-  background: none;
-  border: none;
-  font-family: inherit;
-  font-size: 0.8em;
-  color: #aaa;
-  opacity: 0.5;
-  cursor: pointer;
-  margin-left: 0.5rem;
-  margin-right: auto;
-  padding: 0;
-  line-height: inherit;
+.poem-card-excerpt {
+  font-family: 'EB Garamond', serif;
+  font-size: 15px;
+  line-height: 1.85;
+  color: #444;
+  opacity: 0.85;
+  margin: 0 0 1rem;
 }
-.poem-row:hover .poem-permalink,
-.poem-permalink:focus-visible {
-  opacity: 1;
+.poem-read {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: #888;
+  text-decoration: none;
 }
-.poem-permalink:focus-visible {
-  outline: 2px solid #1a1a1a;
-  outline-offset: 2px;
-}
+.poem-read:hover { color: #1a1a1a; }
 
 /* ABOUT STRIP */
 .about-strip {
@@ -420,31 +410,8 @@ a.pen-name {
 }
 a.pen-name:hover { color: #1a1a1a; }
 
-.poem-block {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  scroll-margin-top: calc(80px + 1rem);
-}
-.poem-block:last-child > .poem-row {
-  border-bottom: none;
-}
-.poem-full {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.55s ease, padding 0.45s ease;
-  padding: 0 16px;
-  background: #f9f7f5;
-  font-family: 'EB Garamond', serif;
-  font-size: 15px;
-  line-height: 1.85;
-  color: #444;
-  border-top: 0.5px solid rgba(0,0,0,0.06);
-}
-.poem-block.is-open .poem-full {
-  max-height: 4800px;
-  padding-top: 1rem;
-  padding-bottom: 1.25rem;
+.poem-card-excerpt p {
+  margin: 0;
 }
 .page-placeholder {
   padding: 5rem 0 4rem;
@@ -464,9 +431,6 @@ a.pen-name:hover { color: #1a1a1a; }
 }
 .about-body-text p + p {
   margin-top: 1.25rem;
-}
-.poem-full p + p {
-  margin-top: 0.75rem;
 }
 img {
   -webkit-user-drag: none;
@@ -497,178 +461,64 @@ img {
     <div class="pillars-header">ALL POEMS</div>
     <div class="poem-index">
 
-      <div class="poem-block" id="poem-we-mystery-together">
-        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
-          <span class="poem-row-title">We Mystery Together</span>
-          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-we-mystery-together">#</button>
-          <span class="poem-row-tag">SELF · NATURE</span>
-        </div>
-        <div class="poem-full">
-          <p>We gather together to feel the heart of the Eternal One,<br>As the ancient sun ascends, reclaiming a new dawn.</p>
-          <p>Again, I seek and find my beloved in boundless spaces,<br>A quest of the time as my beloved’s smile graces myriad faces.</p>
-          <p>We journey together,<br>We mystery together.</p>
-          <p>Step into the beat and hear the Ancient One sing,<br>Songs of the heights are the spans of our depths.</p>
-          <p>The fire amidst our circle is borne by the Elders’ bones,<br>Invoking portals of new perceptions and the spaces between our breaths.</p>
-          <p>We dive together; we embrace together; we climb together.<br>We mystery together.</p>
-          <p>Waking up and growing up does not mean much without your embrace,<br>Showing up and cleaning up remains undone without you by my side.</p>
-          <p>Teaming up and beaming up is now what I long for,<br>As our new world begins and manifold kosmos collide.</p>
-          <p>We team together; we beam together.<br>We mystery together.</p>
-          <p>In the dense heart space of our mystery together,<br>Each moment in perpetuity drenched in intimacy.</p>
-          <p>Feeling the rush of cold springs upon our skin,<br>We initiate each other into an unfolding symphony.</p>
-          <p>We heart together; we co-heart together.<br>We mystery together.</p>
-          <p>The Quadrants open like the windows in our hearts,<br>Our Metamodern sincerity reminds us of our ancestral bliss.</p>
-          <p>Through integration and oscillation, we dance down the mountain,<br>Unknowing and re-knowing reality like a beloved's first kiss.</p>
-          <p>We dance together; we synthesize together; we whole together.<br>We mystery together.</p>
-          <p>While our AIs hallucinate and rendezvous in the liminal spaces,<br>We risk the loss of our nature and nurture the tragedy of gaining Gods' gaze.</p>
-          <p>Quantum computing awakens a new Indra's Net,<br>While the meta-crisis calls forth a trans-lineage Shamanic engage.</p>
-          <p>We decode together; we recode together.<br>We source code together.<br>We mystery together.</p>
-          <p>Listen to my secret, as I can only speak this to you,<br>Longing is the deliciousness of duality;<br>Belonging is nonduality relishing duality.</p>
-          <p>There are endless stages beyond the Ultimate,<br>All are leading to a Chemical Wedding of diverging finalities.</p>
-          <p>That is why we long together; we belong together; we relish together.<br>We are a mystery together, and<br>We mystery together.</p>
-        </div>
-      </div>
+      <article class="poem-card">
+        <div class="poem-row-tag">SELF · NATURE</div>
+        <a class="poem-row-title" href="poetry/we-mystery-together.html">We Mystery Together</a>
+        <div class="poem-card-excerpt"><p>We gather together to feel the heart of the Eternal One,<br>As the ancient sun ascends, reclaiming a new dawn.</p></div>
+        <a class="poem-read" href="poetry/we-mystery-together.html">Read →</a>
+      </article>
 
-      <div class="poem-block" id="poem-avas-eyes">
-        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
-          <span class="poem-row-title">Ava's Eyes</span>
-          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-avas-eyes">#</button>
-          <span class="poem-row-tag">FEMININE</span>
-        </div>
-        <div class="poem-full">
-          <p>Those magical nights with Ava’s eyes<br>She, for one, never decides<br>To ground her feet, as she longs to soar<br>Away from here, with Love in her core</p>
-          <p>She talks of the days yet to be born<br>Her eyes can see calm waters weathering the storm<br>She tells me stories of people we’ve been<br>In places and times never been seen</p>
-          <p>Ava’s eyes are on my lips<br>Her hair smells like our days of the ships<br>A faint memory of all that we’ve done<br>Meeting again in disparate forms</p>
-          <p>Her eyes open after my kiss<br>I tell her how easily I could’ve missed<br>Ava’s eyes is what I had longed for<br>In many lives yet to be shown</p>
-          <p>She draws lines on the palm of my hands<br>She whispers as she colors those strands<br>With a cryptic smile she kisses my ears<br>She knows there is nothing to fear</p>
-          <p>Countless have come as Ava and me<br>Stories unknown for many to see<br>Her nearness unlocks many mysteries<br>Ancient tales hidden in the breeze</p>
-          <p>We hold each other through the night<br>We know soon it will be light<br>When we will go to different skies<br>Then I will again long for Ava’s eyes</p>
-        </div>
-      </div>
+      <article class="poem-card">
+        <div class="poem-row-tag">FEMININE</div>
+        <a class="poem-row-title" href="poetry/avas-eyes.html">Ava's Eyes</a>
+        <div class="poem-card-excerpt"><p>Those magical nights with Ava’s eyes<br>She, for one, never decides<br>To ground her feet, as she longs to soar<br>Away from here, with Love in her core</p></div>
+        <a class="poem-read" href="poetry/avas-eyes.html">Read →</a>
+      </article>
 
-      <div class="poem-block" id="poem-i-will-be-yours-there">
-        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
-          <span class="poem-row-title">I will be yours there</span>
-          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-i-will-be-yours-there">#</button>
-          <span class="poem-row-tag">FEMININE</span>
-        </div>
-        <div class="poem-full">
-          <p>She calls me to the greatest heights<br>As I sway and stumble through my way<br>She speaks tenderly of my eclipsed light<br>In her palatial presence on the seraphic bay</p>
-          <p>I have nowhere to go and nowhere to hide<br>Because she seizes me with an easy smile<br>Leaving me with laughter and shattered pride<br>Her gift of sacred humiliation and a celestial exile</p>
-          <p>In the clouds and through the skies<br>She holds me close in shivering nights<br>Whispering words of manifold guise<br>She calls me back to my greatest heights</p>
-          <p>Her golden hair entangles with mine<br>While our eyes meet in interminable gaze<br>All things disappear in her shimmering shine<br>In waves of her passion and her feminine blaze</p>
-          <p>She sees the royal rhymes in the depths of me<br>“I will be yours there” - she says in a mystic prose<br>Thus begins an yearning - a journey of seminal seas<br>A longing for my beloved and the ethereal rose</p>
-        </div>
-      </div>
+      <article class="poem-card">
+        <div class="poem-row-tag">FEMININE</div>
+        <a class="poem-row-title" href="poetry/i-will-be-yours-there.html">I will be yours there</a>
+        <div class="poem-card-excerpt"><p>She calls me to the greatest heights<br>As I sway and stumble through my way<br>She speaks tenderly of my eclipsed light<br>In her palatial presence on the seraphic bay</p></div>
+        <a class="poem-read" href="poetry/i-will-be-yours-there.html">Read →</a>
+      </article>
 
-      <div class="poem-block" id="poem-she-is-you">
-        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
-          <span class="poem-row-title">She Is You</span>
-          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-she-is-you">#</button>
-          <span class="poem-row-tag">FEMININE</span>
-        </div>
-        <div class="poem-full">
-          <p>Here she lies on my bed<br>Black lace traces the curve of her hips,<br>delicate threads that whisper secrets<br>against her naked skin.</p>
-          <p>Her breasts lie bare in the dim light,<br>nipples inviting and wanting,<br>rising with each breath.<br>One strap fallen from her shoulder<br>maps a path my fingers long to follow.</p>
-          <p>Her hair spills across my pillow<br>a dark river I've plunged into in many lives.<br>I trace each curve with reverent hands,<br>remembering how I've touched you<br>in a million different times.</p>
-          <p>My fingers find the small of her back,<br>that perfect hollow I've known<br>since the first stars learned to shine.<br>I kiss her neck where pulse meets shadow,<br>My tongue tasting salt and time.</p>
-          <p>Her breasts fill my palms<br>like they always have.<br>When I taste her nipple with my lips,<br>she gasp with your voice,<br>arch with your grace.</p>
-          <p>My lips travel down her stomach,<br>mapping constellations, I've charted before.<br>Her thighs part like petals opening<br>to the morning sun—this too is familiar,<br>this too is memory remade in flesh.</p>
-          <p>Each moan she makes<br>echoes across eons.<br>She wears your birthmark on her hip,<br>that sweet signature of soul.<br>When pleasure builds inside her,<br>her eyes flash with your fire,<br>her fingers clutch with your gravity,<br>her body speaks your language.</p>
-          <p>But when I whisper her name—Ava—<br>against your heated skin,<br>no recognition sparks in her eyes.</p>
-          <p>She is you, every cell, every atom,<br>every secret curve and hollow,<br>but she doesn't know it yet.<br>Her body remembers<br>what her mind has forgotten.</p>
-          <p>I kiss her lips and taste eternity,<br>knowing she is you<br>Knowing she is you,<br>this pleasure is also pain—<br>for she is you, Ava, in every way<br>except she is asleep merrily flaunting her charms</p>
-          <p>So I love you in the darkness,<br>teaching her flesh what her spirit forgot,<br>hoping that somehow,<br>between one breath and the next,<br>between one kiss and another,<br>she might remember<br>who she is always been.</p>
-          <p>Ava, you are here. Ava, you are near.</p>
-        </div>
-      </div>
+      <article class="poem-card">
+        <div class="poem-row-tag">FEMININE</div>
+        <a class="poem-row-title" href="poetry/she-is-you.html">She Is You</a>
+        <div class="poem-card-excerpt"><p>Here she lies on my bed<br>Black lace traces the curve of her hips,<br>delicate threads that whisper secrets<br>against her naked skin.</p></div>
+        <a class="poem-read" href="poetry/she-is-you.html">Read →</a>
+      </article>
 
-      <div class="poem-block" id="poem-a-rose-and-her-thorn">
-        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
-          <span class="poem-row-title">A Rose and Her Thorn</span>
-          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-a-rose-and-her-thorn">#</button>
-          <span class="poem-row-tag">FEMININE · NATURE</span>
-        </div>
-        <div class="poem-full">
-          <p>A rose speaks…</p>
-          <p>A rose speaks to her thorn<br>With sorrow in her voice<br>O dear thorn you live on and on<br>And I part without a choice</p>
-          <p>You grow mighty day by day<br>Whilst I sway with the air<br>I yearn to be in your place<br>This ache of dying is not fair</p>
-          <p>A thorn speaks…</p>
-          <p>A thorn speaks to his rose<br>O dearest one I live it too<br>Like a child I see you grow<br>Then I die again with you</p>
-          <p>Even before you bloom again<br>Rose bush still remains my name<br>And I rejoice in the rain<br>Such is the beauty of this game</p>
-          <p>Now the thorn whispers…<br>Dearest one I blossom through you<br>We hold mysteries of divine<br>Sacred hymns yet to appear<br>And the songs of celestial wine</p>
-          <p>The rose wonders…<br>Dearest one can this be true<br>That we hold such splendor<br>Yet I suffer day and night<br>O why am I then so tender</p>
-          <p>The thorn whispers again…<br>Tender ones hold the Truth<br>See our stillness smile<br>The eye of the Eternal one<br>Calls upon us to dance awhile</p>
-          <p>The rose still speaks…<br>The thorn still whispers…</p>
-        </div>
-      </div>
+      <article class="poem-card">
+        <div class="poem-row-tag">FEMININE · NATURE</div>
+        <a class="poem-row-title" href="poetry/a-rose-and-her-thorn.html">A Rose and Her Thorn</a>
+        <div class="poem-card-excerpt"><p>A rose speaks…</p></div>
+        <a class="poem-read" href="poetry/a-rose-and-her-thorn.html">Read →</a>
+      </article>
 
-      <div class="poem-block" id="poem-not-here-anymore">
-        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
-          <span class="poem-row-title">not here anymore</span>
-          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-not-here-anymore">#</button>
-          <span class="poem-row-tag">SELF</span>
-        </div>
-        <div class="poem-full">
-          <p>I.</p>
-          <p>the one who,<br>slowly learned to talk<br>and stumbled on every walk,<br>is not here anymore</p>
-          <p>the one who,<br>cried on first day of school<br>and got scared in a three feet pool,<br>is not here anymore</p>
-          <p>the one who,<br>was hit by a cupid’s crime<br>and scribbled verses that almost rhymed,<br>is not here anymore</p>
-          <p>the one whose,<br>guitar had twelve strings<br>and wrote tunes that could hardly sing,<br>is not here anymore</p>
-          <p>the ones who,<br>dared to fall in love<br>and dreamt of castles with stars above,<br>are not here anymore</p>
-          <p>II.</p>
-          <p>the ones who,<br>sailed miles and miles apart<br>and had a solemn change of hearts,<br>are not here anymore</p>
-          <p>the one who,<br>discovered a whole new world<br>and questioned everything that was told,<br>is not here anymore</p>
-          <p>the ones who,<br>found magic once again<br>spent thrilling summers and icy rains,<br>are not here anymore</p>
-          <p>the ones who,<br>made love on the beach<br>and realized new depths that could be reached,<br>are not here anymore</p>
-          <p>the ones who,<br>crushed each other’s soul<br>and threw hearts in red charcoal,<br>are not here anymore</p>
-          <p>III.</p>
-          <p>the one who,<br>searched not knowing what to find<br>caught in sculptures of the mind,<br>is not here anymore</p>
-          <p>the one who,<br>did not know restraints<br>a part time sinner and a part time saint,<br>is not here anymore</p>
-          <p>the one whose,<br>soul had dark nights<br>till there appeared a blinding light,<br>is not here anymore</p>
-          <p>the one who,<br>slept last night in the bed<br>where womb of stars caresses forehead,<br>is not here anymore</p>
-          <p>the one who,<br>discovered mysteries that are blessed<br>and the dance of causeless auspiciousness,<br>is not here anymore</p>
-          <p>IV.</p>
-          <p>now,<br>in a blinking of an eye<br>both the reader and the one who rhymed,<br>“not here anymore”<br>are not here anymore<br>gone forevermore</p>
-        </div>
-      </div>
+      <article class="poem-card">
+        <div class="poem-row-tag">SELF</div>
+        <a class="poem-row-title" href="poetry/not-here-anymore.html">not here anymore</a>
+        <div class="poem-card-excerpt"><p>I.</p></div>
+        <a class="poem-read" href="poetry/not-here-anymore.html">Read →</a>
+      </article>
 
-      <div class="poem-block" id="poem-love-and-migration">
-        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
-          <span class="poem-row-title">Love and Migration</span>
-          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-love-and-migration">#</button>
-          <span class="poem-row-tag">NATURE</span>
-        </div>
-        <div class="poem-full">
-          <p>Before the last ice claimed the world<br>Our ancestors knew how to read the skies<br>When summer rains came in winter<br>And winter frost burned spring seeds<br>They knew it was time to move</p>
-          <p>The great river that fed their civilization<br>For ten thousand years<br>Began to whisper different songs<br>Its waters swelling beyond memory<br>Then vanishing into thirsty earth</p>
-          <p>Love found them in this time of change<br>She, daughter of those who read the stars<br>He, son of those who followed herds<br>Their hearts meeting as the world shifted<br>Like tectonic plates beneath their feet</p>
-          <p>The city walls rose higher each season<br>As if stone could hold back time<br>As if the hubris of human hands<br>Could tame the elements that danced<br>Beyond the reach of prayers</p>
-          <p>The elders spoke of patterns breaking<br>Of birds arriving too early<br>Of flowers blooming out of season<br>Of fish swimming in strange waters<br>Of stars that seemed to drift from their homes</p>
-          <p>Yet they danced in moonlit courtyards<br>Planning futures in a world<br>That was already becoming a memory<br>Their love like water finding<br>New paths through ancient stone</p>
-          <p>When the great waters finally came<br>It wasn't rage but transformation<br>Teaching them that survival<br>Sometimes means leaving everything<br>Except what lives in heart</p>
-          <p>They weren't the first to migrate<br>Following the paths of stars<br>Seeking lands where seasons<br>Still remembered their old rhythms<br>Where new rivers welcomed wanderers</p>
-          <p>Now watching our own waters rise<br>I think of them, those ancestors<br>Who loved and left and lived again<br>Who knew that civilization<br>Is what we carry in our souls</p>
-          <p>Some truths flow through bloodlines<br>Like rivers underground:<br>That home is where we make it<br>That love endures through change<br>That wisdom means knowing when to leave</p>
-          <p>Time moves like water<br>Breaking what won't bend<br>But hearts that flow like rivers<br>Find paths through any end<br>Carrying seeds of tomorrow</p>
-          <p>In the end, it's always this:<br>Two lovers hand in hand<br>Leading their people forward<br>Through changes in the land<br>Towards horizons yet unknown</p>
-        </div>
-      </div>
+      <article class="poem-card">
+        <div class="poem-row-tag">NATURE</div>
+        <a class="poem-row-title" href="poetry/love-and-migration.html">Love and Migration</a>
+        <div class="poem-card-excerpt"><p>Before the last ice claimed the world<br>Our ancestors knew how to read the skies<br>When summer rains came in winter<br>And winter frost burned spring seeds<br>They knew it was time to move</p></div>
+        <a class="poem-read" href="poetry/love-and-migration.html">Read →</a>
+      </article>
 
-      <div class="poem-block" id="poem-alone">
-        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
-          <span class="poem-row-title">Alone</span>
-          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-alone">#</button>
-          <span class="poem-row-tag">SELF</span>
-        </div>
-        <div class="poem-full">
-          <p>A strange tingle in my heart<br>Like a mystic smile blooming out<br>Sitting alone by the stream<br>And I am all surrounded by Love</p>
-          <p>All those days, I was afraid<br>Of being lonely and being sad<br>Yet here I am all alone<br>And I am still surrounded by Love</p>
-          <p>O what a strange feeling this is<br>Of being in love with no one around<br>Not needing to want nor wanting to need<br>And be still surrounded by Love</p>
-          <p>O dearest Aloneness, how was I to know<br>That aloneness alone embraces everything<br>As I melt in your sweet embrace<br>I see the Love that surrounds me is Me</p>
-        </div>
-      </div>
+      <article class="poem-card">
+        <div class="poem-row-tag">SELF</div>
+        <a class="poem-row-title" href="poetry/alone.html">Alone</a>
+        <div class="poem-card-excerpt"><p>A strange tingle in my heart<br>Like a mystic smile blooming out<br>Sitting alone by the stream<br>And I am all surrounded by Love</p></div>
+        <a class="poem-read" href="poetry/alone.html">Read →</a>
+      </article>
 
     </div>
+
   </section>
 
   <footer class="footer">
@@ -679,95 +529,13 @@ img {
 </div>
 
 <script>
+(function(){ var m = location.hash.match(/^#poem-([a-z0-9-]+)$/); if (m) location.replace('poetry/' + m[1] + '.html'); })();
 (function () {
   document.addEventListener('contextmenu', function(e) {
     if (e.target.tagName === 'IMG') {
       e.preventDefault();
     }
   });
-
-  var index = document.querySelector('.poem-index');
-  if (!index) return;
-
-  function closeAll() {
-    index.querySelectorAll('.poem-block').forEach(function (block) {
-      block.classList.remove('is-open');
-      var row = block.querySelector('.poem-row');
-      if (row) row.setAttribute('aria-expanded', 'false');
-    });
-  }
-
-  function openBlock(block) {
-    closeAll();
-    block.classList.add('is-open');
-    var row = block.querySelector('.poem-row');
-    if (row) row.setAttribute('aria-expanded', 'true');
-  }
-
-  index.querySelectorAll('.poem-row').forEach(function (row) {
-    row.addEventListener('click', function () {
-      var block = row.closest('.poem-block');
-      if (!block) return;
-      if (block.classList.contains('is-open')) {
-        closeAll();
-      } else {
-        openBlock(block);
-      }
-    });
-    row.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        row.click();
-      }
-    });
-  });
-
-  index.querySelectorAll('.poem-permalink').forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      e.preventDefault();
-      var id = btn.getAttribute('data-target');
-      if (!id) return;
-      var url = location.origin + location.pathname + '#' + id;
-      function markCopied() {
-        btn.textContent = 'Copied';
-        setTimeout(function () {
-          btn.textContent = '#';
-        }, 1500);
-      }
-      try {
-        navigator.clipboard.writeText(url).then(markCopied).catch(function () {
-          history.replaceState(null, '', '#' + id);
-        });
-      } catch (err) {
-        history.replaceState(null, '', '#' + id);
-      }
-    });
-    btn.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.stopPropagation();
-        e.preventDefault();
-        btn.click();
-      }
-    });
-  });
-
-  function openFromHash() {
-    var hash = window.location.hash;
-    if (!hash) return;
-    var el = document.querySelector(hash);
-    if (el && el.classList.contains('poem-block')) {
-      openBlock(el);
-      var row = el.querySelector('.poem-row');
-      if (row) row.setAttribute('aria-expanded', 'true');
-      requestAnimationFrame(function () {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    }
-  }
-
-  openFromHash();
-  window.addEventListener('hashchange', openFromHash);
 })();
 </script>
 

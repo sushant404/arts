@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love and Migration — S.S. Ryusho</title>
+<meta name="description" content="Before the last ice claimed the world">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Love and Migration">
+<meta property="og:description" content="Before the last ice claimed the world Our ancestors knew how to read the skies">
+<meta property="og:image" content="https://ryusho.art/assets/images/poems/love-and-migration.jpg">
+<meta property="og:url" content="https://ryusho.art/poetry/love-and-migration.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Inconsolata:wght@300;400&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { min-height: 100%; }
+body {
+  font-family: 'Crimson Pro', serif;
+  color: #1a1a1a;
+  background: #ffffff;
+}
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.86);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 2rem 2rem 1.5rem;
+  border-bottom: 0.5px solid rgba(0,0,0,0.1);
+  margin-bottom: 0;
+  transition: transform 400ms ease, opacity 400ms ease;
+}
+.topbar.is-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.topbar-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.pen-name {
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+.pen-sub {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: #888;
+  margin-top: 2px;
+}
+.nav-top {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.nav-top a {
+  font-family: 'Inconsolata', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #666;
+  text-decoration: none;
+}
+.nav-top a:hover { color: #1a1a1a; }
+a.pen-name {
+  color: inherit;
+  text-decoration: none;
+}
+a.pen-name:hover { color: #1a1a1a; }
+.footer {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  color: #aaa;
+  letter-spacing: 0.06em;
+}
+.footer a {
+  color: #aaa;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: #1a1a1a;
+}
+.poem-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+.poem-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.6);
+  will-change: transform;
+  animation: poemDrift 60s ease-in-out infinite alternate;
+}
+@keyframes poemDrift {
+  from { transform: scale(1) translate(0,0); }
+  to { transform: scale(1.06) translate(-1.5%,1%); }
+}
+.poem-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.86) 22%, rgba(255,255,255,0.86) 78%, rgba(255,255,255,0.96) 100%);
+}
+.poem-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 280px 280px;
+  animation: grainShift 0.5s steps(4) infinite;
+}
+@keyframes grainShift {
+  from { background-position: 0 0; }
+  to { background-position: 280px 210px; }
+}
+img.protected {
+  -webkit-user-select: none; user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 1px;
+  z-index: 101;
+  background: #999;
+  width: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+.progress.is-on { opacity: 1; }
+.poem-page {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: calc(80px + 16vh) 1.5rem 20vh;
+}
+.poem-tag {
+  font-family: 'Inconsolata', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: #888;
+  text-transform: uppercase;
+}
+.poem-title {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 2.4rem;
+  color: #1a1a1a;
+  margin: 0.4em 0 1.6em;
+}
+.poem-page p {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #444;
+  margin: 0 0 1.7em;
+  text-align: left;
+}
+.poem-page p:last-child { margin-bottom: 0; }
+
+.poem-page .poem-tag,
+.poem-page .poem-title,
+.poem-page p:first-of-type {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.poem-page.is-ready .poem-tag {
+  opacity: 1;
+  transform: none;
+  transition: opacity 900ms ease-out, transform 900ms ease-out;
+}
+.poem-page.is-ready .poem-title {
+  opacity: 1;
+  transform: none;
+  transition: opacity 900ms ease-out 200ms, transform 900ms ease-out 200ms;
+}
+.poem-page.is-ready p:first-of-type {
+  opacity: 1;
+  transform: none;
+  transition: opacity 900ms ease-out 400ms, transform 900ms ease-out 400ms;
+}
+.poem-page p:not(:first-of-type) {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 900ms ease-out, transform 900ms ease-out;
+}
+.poem-page p:not(:first-of-type).is-visible {
+  opacity: 1;
+  transform: none;
+}
+.poem-nav {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.poem-nav a {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: #666;
+  text-decoration: none;
+  opacity: 0.75;
+  max-width: 46%;
+}
+.poem-nav a:last-child { text-align: right; }
+.poem-nav a:hover,
+.poem-nav a:focus { opacity: 1; }
+.poem-nav .poem-tag {
+  display: block;
+  margin-top: 0.45em;
+  opacity: 1;
+  transform: none;
+}
+@media (max-width: 600px) {
+  .poem-title { font-size: 1.9rem; }
+  .poem-page p { font-size: 1.1rem; }
+  .poem-nav {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .poem-nav a { max-width: 100%; }
+  .poem-nav a:last-child { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .poem-bg img { animation: none; will-change: auto; }
+  .poem-grain { animation: none; }
+  .topbar { transition: none; }
+  .poem-page .poem-tag,
+  .poem-page .poem-title,
+  .poem-page p,
+  .poem-page p:first-of-type,
+  .poem-page p:not(:first-of-type) {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav class="topbar">
+    <div class="topbar-inner">
+      <div>
+        <a href="../index.html" class="pen-name">S.S. Ryusho</a>
+      </div>
+      <div class="nav-top">
+        <a href="../poetry.html">Poetry</a>
+        <a href="../music.html">Music</a>
+        <a href="../photography.html">Photography</a>
+        <a href="../about.html">About</a>
+      </div>
+    </div>
+  </nav>
+<div class="poem-bg" aria-hidden="true">
+  <img src="../assets/images/poems/love-and-migration.jpg" class="protected" draggable="false" alt="">
+  <div class="poem-overlay"></div>
+  <div class="poem-grain"></div>
+</div>
+<main class="poem-page">
+          <div class="poem-tag">NATURE</div>
+          <h1 class="poem-title">Love and Migration</h1>
+          <p>Before the last ice claimed the world<br>Our ancestors knew how to read the skies<br>When summer rains came in winter<br>And winter frost burned spring seeds<br>They knew it was time to move</p>
+          <p>The great river that fed their civilization<br>For ten thousand years<br>Began to whisper different songs<br>Its waters swelling beyond memory<br>Then vanishing into thirsty earth</p>
+          <p>Love found them in this time of change<br>She, daughter of those who read the stars<br>He, son of those who followed herds<br>Their hearts meeting as the world shifted<br>Like tectonic plates beneath their feet</p>
+          <p>The city walls rose higher each season<br>As if stone could hold back time<br>As if the hubris of human hands<br>Could tame the elements that danced<br>Beyond the reach of prayers</p>
+          <p>The elders spoke of patterns breaking<br>Of birds arriving too early<br>Of flowers blooming out of season<br>Of fish swimming in strange waters<br>Of stars that seemed to drift from their homes</p>
+          <p>Yet they danced in moonlit courtyards<br>Planning futures in a world<br>That was already becoming a memory<br>Their love like water finding<br>New paths through ancient stone</p>
+          <p>When the great waters finally came<br>It wasn't rage but transformation<br>Teaching them that survival<br>Sometimes means leaving everything<br>Except what lives in heart</p>
+          <p>They weren't the first to migrate<br>Following the paths of stars<br>Seeking lands where seasons<br>Still remembered their old rhythms<br>Where new rivers welcomed wanderers</p>
+          <p>Now watching our own waters rise<br>I think of them, those ancestors<br>Who loved and left and lived again<br>Who knew that civilization<br>Is what we carry in our souls</p>
+          <p>Some truths flow through bloodlines<br>Like rivers underground:<br>That home is where we make it<br>That love endures through change<br>That wisdom means knowing when to leave</p>
+          <p>Time moves like water<br>Breaking what won't bend<br>But hearts that flow like rivers<br>Find paths through any end<br>Carrying seeds of tomorrow</p>
+          <p>In the end, it's always this:<br>Two lovers hand in hand<br>Leading their people forward<br>Through changes in the land<br>Towards horizons yet unknown</p>
+</main>
+<nav class="poem-nav" aria-label="More poems">
+  <a href="not-here-anymore.html">← not here anymore<span class="poem-tag">SELF</span></a>
+  <a href="alone.html">Alone →<span class="poem-tag">SELF</span></a>
+</nav>
+<footer class="footer">
+    <span>© 2026 S.S. Ryusho · Pacific Northwest · Bay Area</span>
+    <span><a href="https://www.sushantshrestha.com" target="_blank" rel="noopener noreferrer">sushantshrestha.com</a> · <a href="https://www.tenderanomalies.com" target="_blank" rel="noopener noreferrer">tenderanomalies.com</a></span>
+  </footer>
+<script>
+
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var page = document.querySelector('.poem-page');
+  var bar = document.querySelector('.topbar');
+  var progress = document.getElementById('progress');
+  var prevHref = document.querySelector('.poem-nav a:first-child').getAttribute('href');
+  var nextHref = document.querySelector('.poem-nav a:last-child').getAttribute('href');
+
+  document.addEventListener('contextmenu', function (e) {
+    if (e.target.closest('.poem-bg, .poem-bg img, img')) e.preventDefault();
+  });
+  document.addEventListener('dragstart', function (e) {
+    if (e.target.closest('.poem-bg, img')) e.preventDefault();
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    if (page) page.classList.add('is-ready');
+    var rest = page ? page.querySelectorAll('p:not(:first-of-type)') : [];
+    function showAll() {
+      rest.forEach(function (p) { p.classList.add('is-visible'); });
+    }
+    if (reduce || document.documentElement.scrollHeight <= window.innerHeight) {
+      showAll();
+    } else if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -30% 0px' });
+      rest.forEach(function (p) { io.observe(p); });
+    } else {
+      showAll();
+    }
+  });
+
+  var hideTimer;
+  var lastY = window.scrollY;
+  function topbarFocused() {
+    var a = document.activeElement;
+    return !!(a && bar && bar.contains(a));
+  }
+  function showBar() {
+    if (bar) bar.classList.remove('is-hidden');
+    scheduleHide();
+  }
+  function scheduleHide() {
+    clearTimeout(hideTimer);
+    if (reduce) return;
+    hideTimer = setTimeout(function () {
+      if (!topbarFocused() && bar) bar.classList.add('is-hidden');
+    }, 1200);
+  }
+  ['mousemove', 'touchstart', 'keydown'].forEach(function (ev) {
+    document.addEventListener(ev, showBar, { passive: true });
+  });
+  if (bar) {
+    bar.addEventListener('focusin', showBar);
+    bar.addEventListener('focusout', scheduleHide);
+  }
+  function updateProgress() {
+    var y = window.scrollY;
+    if (y < lastY) showBar();
+    else showBar();
+    lastY = y;
+    var max = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var pct = max > 0 ? (y / max) * 100 : 0;
+    if (progress) {
+      progress.style.width = pct + '%';
+      progress.classList.toggle('is-on', y > 40);
+    }
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+  scheduleHide();
+
+  document.addEventListener('keydown', function (e) {
+    var t = e.target;
+    var tag = t && t.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || (t && t.isContentEditable)) return;
+    if (e.key === 'ArrowLeft') location.href = prevHref;
+    if (e.key === 'ArrowRight') location.href = nextHref;
+  });
+})();
+
+</script>
+</body>
+</html>
