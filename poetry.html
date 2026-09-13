@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Poetry — Ansui Ryusho</title>
+<title>Poetry — S.S. Ryusho</title>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Inconsolata:wght@300;400&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -341,6 +341,27 @@
   color: #aaa;
   letter-spacing: 0.08em;
 }
+.poem-permalink {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.8em;
+  color: #aaa;
+  opacity: 0.5;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  margin-right: auto;
+  padding: 0;
+  line-height: inherit;
+}
+.poem-row:hover .poem-permalink,
+.poem-permalink:focus-visible {
+  opacity: 1;
+}
+.poem-permalink:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
+}
 
 /* ABOUT STRIP */
 .about-strip {
@@ -403,6 +424,7 @@ a.pen-name:hover { color: #1a1a1a; }
   display: flex;
   flex-direction: column;
   min-width: 0;
+  scroll-margin-top: calc(80px + 1rem);
 }
 .poem-block:last-child > .poem-row {
   border-bottom: none;
@@ -460,7 +482,7 @@ img {
   <nav class="topbar">
     <div class="topbar-inner">
       <div>
-        <a href="index.html" class="pen-name">Ansui Ryusho</a>
+        <a href="index.html" class="pen-name">S.S. Ryusho</a>
       </div>
       <div class="nav-top">
         <a href="poetry.html">Poetry</a>
@@ -478,6 +500,7 @@ img {
       <div class="poem-block" id="poem-we-mystery-together">
         <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
           <span class="poem-row-title">We Mystery Together</span>
+          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-we-mystery-together">#</button>
           <span class="poem-row-tag">SELF · NATURE</span>
         </div>
         <div class="poem-full">
@@ -505,31 +528,10 @@ img {
         </div>
       </div>
 
-      <div class="poem-block" id="poem-sweet-deceptions">
-        <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
-          <span class="poem-row-title">Sweet Deceptions</span>
-          <span class="poem-row-tag">FEMININE · SELF</span>
-        </div>
-        <div class="poem-full">
-          <p>My heart pains when I am deceived by her<br>Yet I long for her presence more and more<br>Her measured words are like honey drips<br>She delivers them with an innocent core</p>
-          <p>Her core draws me close as they swirl so deep<br>Her sweet omissions are reverent lies<br>She tells me half-stories in complete confidence<br>She reveals her curated self and hides her skies</p>
-          <p>She hides in those late-night dances<br>Losing herself in her curvy moves<br>Very aware that all eyes are on her<br>Yet she pretends to be aloof</p>
-          <p>Aloof and charmed, she laughs<br>Forming master plans behind the scenes<br>Secretly sending mesmerizing vibes<br>Seducing hearts like an artist's scheme</p>
-          <p>She performs like a peerless artist<br>Shows her feminine flowering like a rose<br>She is a puzzle with missing pieces<br>Speaks in riddles to draw me close</p>
-          <p>Her riddles draw me close<br>Slowly intoxicating me with her stories<br>She skips around her careful truth<br>Simulating open-heartedness in cryptic allegories</p>
-          <p>Her open heart moves are like chess pieces<br>She has thought through the acts well ahead<br>She makes you feel like you are leading her<br>While she plants seeds in the corners of your mind</p>
-          <p>The corner of my mind can sense and see<br>Her kisses are here for a greater trajectory<br>Although they taste so genuine and sweet<br>They are arrows searching for a victory</p>
-          <p>Her victory is predefined<br>Yet I let her chart her course through me<br>She has charms, and she has moves<br>She weaves even tender moments into strategies</p>
-          <p>Her strategy shows cracks once in a while<br>When she thinks I am asleep<br>I see untamed winds and honest tears<br>Raw moments she forgot to frame</p>
-          <p>Knowing her frames and her games<br>I still choose to dance for a while<br>This checkered floor is my dance floor<br>But for her, it is another chessboard</p>
-          <p>She smiles as my heart beats faster<br>While her mind maps out each play<br>I dance in sweet surrender here<br>As she plots her winning ways</p>
-          <p>She smiles as she shreds apart my naive innocence<br>While truth and fiction interweave<br>In her web of loving words and her sweet deceptions</p>
-        </div>
-      </div>
-
       <div class="poem-block" id="poem-avas-eyes">
         <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
           <span class="poem-row-title">Ava's Eyes</span>
+          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-avas-eyes">#</button>
           <span class="poem-row-tag">FEMININE</span>
         </div>
         <div class="poem-full">
@@ -546,6 +548,7 @@ img {
       <div class="poem-block" id="poem-i-will-be-yours-there">
         <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
           <span class="poem-row-title">I will be yours there</span>
+          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-i-will-be-yours-there">#</button>
           <span class="poem-row-tag">FEMININE</span>
         </div>
         <div class="poem-full">
@@ -560,6 +563,7 @@ img {
       <div class="poem-block" id="poem-she-is-you">
         <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
           <span class="poem-row-title">She Is You</span>
+          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-she-is-you">#</button>
           <span class="poem-row-tag">FEMININE</span>
         </div>
         <div class="poem-full">
@@ -581,6 +585,7 @@ img {
       <div class="poem-block" id="poem-a-rose-and-her-thorn">
         <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
           <span class="poem-row-title">A Rose and Her Thorn</span>
+          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-a-rose-and-her-thorn">#</button>
           <span class="poem-row-tag">FEMININE · NATURE</span>
         </div>
         <div class="poem-full">
@@ -600,6 +605,7 @@ img {
       <div class="poem-block" id="poem-not-here-anymore">
         <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
           <span class="poem-row-title">not here anymore</span>
+          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-not-here-anymore">#</button>
           <span class="poem-row-tag">SELF</span>
         </div>
         <div class="poem-full">
@@ -629,6 +635,7 @@ img {
       <div class="poem-block" id="poem-love-and-migration">
         <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
           <span class="poem-row-title">Love and Migration</span>
+          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-love-and-migration">#</button>
           <span class="poem-row-tag">NATURE</span>
         </div>
         <div class="poem-full">
@@ -650,6 +657,7 @@ img {
       <div class="poem-block" id="poem-alone">
         <div class="poem-row" role="button" tabindex="0" aria-expanded="false">
           <span class="poem-row-title">Alone</span>
+          <button type="button" class="poem-permalink" aria-label="Copy link to this poem" data-target="poem-alone">#</button>
           <span class="poem-row-tag">SELF</span>
         </div>
         <div class="poem-full">
@@ -664,7 +672,7 @@ img {
   </section>
 
   <footer class="footer">
-    <span>© 2026 Ansui Ryusho · Pacific Northwest · Bay Area</span>
+    <span>© 2026 S.S. Ryusho · Pacific Northwest · Bay Area</span>
     <span><a href="https://www.sushantshrestha.com" target="_blank" rel="noopener noreferrer">sushantshrestha.com</a> · <a href="https://www.tenderanomalies.com" target="_blank" rel="noopener noreferrer">tenderanomalies.com</a></span>
   </footer>
 
@@ -714,16 +722,52 @@ img {
     });
   });
 
-  var hash = window.location.hash;
-  if (hash) {
+  index.querySelectorAll('.poem-permalink').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      var id = btn.getAttribute('data-target');
+      if (!id) return;
+      var url = location.origin + location.pathname + '#' + id;
+      function markCopied() {
+        btn.textContent = 'Copied';
+        setTimeout(function () {
+          btn.textContent = '#';
+        }, 1500);
+      }
+      try {
+        navigator.clipboard.writeText(url).then(markCopied).catch(function () {
+          history.replaceState(null, '', '#' + id);
+        });
+      } catch (err) {
+        history.replaceState(null, '', '#' + id);
+      }
+    });
+    btn.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.stopPropagation();
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  });
+
+  function openFromHash() {
+    var hash = window.location.hash;
+    if (!hash) return;
     var el = document.querySelector(hash);
     if (el && el.classList.contains('poem-block')) {
       openBlock(el);
+      var row = el.querySelector('.poem-row');
+      if (row) row.setAttribute('aria-expanded', 'true');
       requestAnimationFrame(function () {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     }
   }
+
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
 })();
 </script>
 
