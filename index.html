@@ -554,6 +554,12 @@ img {
   user-select: none;
   -webkit-user-drag: none;
 }
+img.protected, .photo-shield {
+  -webkit-user-select: none; user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
@@ -601,7 +607,7 @@ img {
     <div class="pillars-header">THEMATIC WORLDS</div>
     <div class="pillar-grid">
       <div class="pillar">
-        <img class="pillar-bg pillar-bg--self" src="assets/images/self/self1.png" alt="">
+        <img class="pillar-bg pillar-bg--self protected" src="assets/images/self/self1.png" alt="" draggable="false">
         <div class="pillar-overlay" aria-hidden="true"></div>
         <div class="pillar-content">
           <div class="pillar-glyph">I</div>
@@ -615,7 +621,7 @@ img {
         </div>
       </div>
       <div class="pillar">
-        <img class="pillar-bg" src="assets/images/feminine/fem1.png" alt="">
+        <img class="pillar-bg protected" src="assets/images/feminine/fem1.png" alt="" draggable="false">
         <div class="pillar-overlay" aria-hidden="true"></div>
         <div class="pillar-content">
           <div class="pillar-glyph">△▽</div>
@@ -630,7 +636,7 @@ img {
         </div>
       </div>
       <div class="pillar">
-        <img class="pillar-bg" src="assets/images/nature/nature1.JPG" alt="">
+        <img class="pillar-bg protected" src="assets/images/nature/nature1.JPG" alt="" draggable="false">
         <div class="pillar-overlay" aria-hidden="true"></div>
         <div class="pillar-content">
           <div class="pillar-glyph">∿</div>
@@ -653,11 +659,9 @@ img {
 </div>
 
 <script>
-document.addEventListener('contextmenu', function(e) {
-  if (e.target.tagName === 'IMG') {
-    e.preventDefault();
-  }
-});
+document.addEventListener('contextmenu', e => { if (e.target.closest('img, .photo-shield')) e.preventDefault(); });
+document.addEventListener('dragstart', e => { if (e.target.closest('img')) e.preventDefault(); });
+document.addEventListener('copy', e => { if (window.getSelection().containsNode && [...document.images].some(i => window.getSelection().containsNode(i, true))) e.preventDefault(); });
 
 (function () {
   var el = document.body;

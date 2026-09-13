@@ -493,8 +493,13 @@ a.pen-name:hover { color: #1a1a1a; }
   flex-shrink: 0;
   transition: opacity 0.3s ease;
 }
-.photo-strip img:hover {
+.photo-strip .photo-frame:hover img {
   opacity: 0.85;
+}
+.photo-frame {
+  position: relative;
+  flex-shrink: 0;
+  height: 420px;
 }
 .photo-section-divider {
   border: none;
@@ -544,6 +549,20 @@ img {
 .photo-strip img {
   pointer-events: auto;
 }
+img.protected, .photo-shield {
+  -webkit-user-select: none; user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
+.photo-strip img.protected {
+  pointer-events: auto;
+}
+.photo-shield {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+}
 </style>
 </head>
 <body>
@@ -578,11 +597,11 @@ img {
       <div class="photo-section-label" id="photo-label-feminine">FEMININE</div>
       <p class="photo-section-desc">The beloved as portal.</p>
       <div class="photo-strip">
-        <img src="assets/images/feminine/fem1.png" alt="">
-        <img src="assets/images/feminine/fem2.png" alt="">
-        <img src="assets/images/feminine/fem3.jpg" alt="">
-        <img src="assets/images/feminine/fem4.png" alt="">
-        <img src="assets/images/feminine/fem5.png" alt="">
+        <div class="photo-frame"><img class="protected" src="assets/images/feminine/fem1.png" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/feminine/fem2.png" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/feminine/fem3.jpg" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/feminine/fem4.png" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/feminine/fem5.png" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
       </div>
       <hr class="photo-section-divider">
     </section>
@@ -591,12 +610,12 @@ img {
       <div class="photo-section-label" id="photo-label-self">SELF</div>
       <p class="photo-section-desc">The interior witness.</p>
       <div class="photo-strip">
-        <img src="assets/images/self/self1.png" alt="">
-        <img src="assets/images/self/self2.png" alt="">
-        <img src="assets/images/self/self3.png" alt="">
-        <img src="assets/images/self/self4.png" alt="">
-        <img src="assets/images/self/self5.png" alt="">
-        <img src="assets/images/self/self6.png" alt="">
+        <div class="photo-frame"><img class="protected" src="assets/images/self/self1.png" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/self/self2.png" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/self/self3.png" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/self/self4.png" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/self/self5.png" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/self/self6.png" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
       </div>
       <hr class="photo-section-divider">
     </section>
@@ -605,16 +624,16 @@ img {
       <div class="photo-section-label" id="photo-label-nature">NATURE</div>
       <p class="photo-section-desc">The world as mirror and teacher.</p>
       <div class="photo-strip">
-        <img src="assets/images/nature/nature1.JPG" alt="">
-        <img src="assets/images/nature/nature2.JPG" alt="">
-        <img src="assets/images/nature/nature3.JPG" alt="">
-        <img src="assets/images/nature/nature4.JPG" alt="">
-        <img src="assets/images/nature/nature5.JPG" alt="">
-        <img src="assets/images/nature/nature6.jpg" alt="">
-        <img src="assets/images/nature/nature7.jpg" alt="">
-        <img src="assets/images/nature/nature8.jpg" alt="">
-        <img src="assets/images/nature/nature9.jpg" alt="">
-        <img src="assets/images/nature/nature10.JPG" alt="">
+        <div class="photo-frame"><img class="protected" src="assets/images/nature/nature1.JPG" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/nature/nature2.JPG" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/nature/nature3.JPG" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/nature/nature4.JPG" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/nature/nature5.JPG" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/nature/nature6.jpg" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/nature/nature7.jpg" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/nature/nature8.jpg" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/nature/nature9.jpg" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
+        <div class="photo-frame"><img class="protected" src="assets/images/nature/nature10.JPG" alt="" draggable="false"><div class="photo-shield" aria-hidden="true"></div></div>
       </div>
     </section>
 
@@ -622,17 +641,15 @@ img {
 
   <script>
   (function () {
-    document.addEventListener('contextmenu', function(e) {
-      if (e.target.tagName === 'IMG') {
-        e.preventDefault();
-      }
-    });
+    document.addEventListener('contextmenu', e => { if (e.target.closest('img, .photo-shield')) e.preventDefault(); });
+    document.addEventListener('dragstart', e => { if (e.target.closest('img')) e.preventDefault(); });
+    document.addEventListener('copy', e => { if (window.getSelection().containsNode && [...document.images].some(i => window.getSelection().containsNode(i, true))) e.preventDefault(); });
 
     var stripStates = [];
     document.querySelectorAll('.photo-strip').forEach(function (strip) {
-      var originals = Array.prototype.slice.call(strip.querySelectorAll('img'));
-      originals.forEach(function (img) {
-        strip.appendChild(img.cloneNode(true));
+      var originals = Array.prototype.slice.call(strip.querySelectorAll('.photo-frame'));
+      originals.forEach(function (frame) {
+        strip.appendChild(frame.cloneNode(true));
       });
 
       var state = { strip: strip, paused: false };

@@ -459,6 +459,12 @@ img {
   user-drag: none;
   pointer-events: none;
 }
+img.protected, .photo-shield {
+  -webkit-user-select: none; user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
@@ -481,7 +487,7 @@ img {
 
 
   <section class="about-strip">
-    <img class="about-biopic" src="assets/images/about/biopic.png" alt="">
+    <img class="about-biopic protected" src="assets/images/about/biopic.png" alt="" draggable="false">
     <div class="about-label">ABOUT S.S. RYUSHO</div>
     <div class="about-body-text">
       <p>S.S. Ryusho is the pen name of Sushant Shrestha.</p>
@@ -499,11 +505,9 @@ img {
 </div>
 
 <script>
-document.addEventListener('contextmenu', function(e) {
-  if (e.target.tagName === 'IMG') {
-    e.preventDefault();
-  }
-});
+document.addEventListener('contextmenu', e => { if (e.target.closest('img, .photo-shield')) e.preventDefault(); });
+document.addEventListener('dragstart', e => { if (e.target.closest('img')) e.preventDefault(); });
+document.addEventListener('copy', e => { if (window.getSelection().containsNode && [...document.images].some(i => window.getSelection().containsNode(i, true))) e.preventDefault(); });
 </script>
 
 </body>
